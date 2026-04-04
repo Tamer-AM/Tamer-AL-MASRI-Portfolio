@@ -1,0 +1,65 @@
+{#
+  Partial: project_card.html
+  Expects: `project` variable (Project model instance)
+  Include with: {% include "partials/project_card.html" %}
+#}
+<div class="pf-project-card h-100">
+
+  <!-- Preview image -->
+  <div class="pf-project-card-img-wrap">
+    {% if project.preview_img %}
+      <img
+        src="{{ url_for('static', filename='img/' + project.preview_img) }}"
+        alt="{{ project.title }} preview"
+        class="pf-project-card-img"
+      />
+    {% else %}
+      <div class="pf-project-card-img-placeholder">
+        <i class="bi bi-code-slash"></i>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="pf-project-card-body">
+    <!-- Category badge -->
+    <span class="pf-category-badge pf-category-badge--{{ project.category }}">
+      {{ project.category | capitalize }}
+    </span>
+
+    <h5 class="pf-project-card-title mt-2">{{ project.title }}</h5>
+    <p class="pf-project-card-desc">{{ project.short_desc }}</p>
+
+    <!-- Tech tags -->
+    {% if project.tags_list %}
+    <div class="pf-tags-wrap mb-3">
+      {% for tag in project.tags_list[:4] %}
+        <span class="pf-tag">{{ tag }}</span>
+      {% endfor %}
+      {% if project.tags_list | length > 4 %}
+        <span class="pf-tag pf-tag--more">+{{ project.tags_list | length - 4 }}</span>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Action buttons -->
+    <div class="d-flex flex-wrap gap-2 mt-auto">
+      <a href="{{ url_for('projects.detail', slug=project.slug) }}"
+         class="btn pf-btn-primary btn-sm">
+        View Details
+      </a>
+      {% if project.github_url %}
+      <a href="{{ project.github_url }}" target="_blank" rel="noopener"
+         class="btn pf-btn-ghost btn-sm">
+        <i class="bi bi-github me-1"></i>GitHub
+      </a>
+      {% endif %}
+      {% if project.demo_url %}
+      <a href="{{ project.demo_url }}" target="_blank" rel="noopener"
+         class="btn pf-btn-ghost btn-sm">
+        <i class="bi bi-box-arrow-up-right me-1"></i>Demo
+      </a>
+      {% endif %}
+    </div>
+  </div>
+
+</div>

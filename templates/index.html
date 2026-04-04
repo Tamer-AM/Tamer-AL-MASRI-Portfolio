@@ -2,6 +2,13 @@
 
 {% block title %}Tamer AL MASRI — CS Student & Developer{% endblock %}
 
+
+{% block head %}
+
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}" />
+{% endblock %}
+
 {% block content %}
 
 <!-- ═══════════════════════════════════════════════════════
@@ -16,7 +23,7 @@
       <div class="col-lg-5 text-center">
         <div class="pf-portrait-wrap">
           <img
-            src="{{ url_for('static', filename='img/portrait.jpg') }}"
+            src="{{ url_for('static', filename='images/Tamer formal pic.jpeg') }}"
             alt="Your Name"
             class="pf-portrait"
           />
@@ -28,13 +35,14 @@
         <p class="pf-hero-greeting">Hi, I'm</p>
         <h1 class="pf-hero-name">Tamer AL MASRI</h1>
         <p class="pf-hero-role">
-          Computer Science Student at SORBONNE UNIVERSITY, France
+          Computer Science Student 
           <span class="pf-accent-sep">/</span>
           Software Developer
         </p>
         <p class="pf-hero-desc">
           I build clean, purposeful software — from web apps to embedded systems.
           Passionate about solving real problems through well-structured code. blabla
+          Currently studying in Sorbonne University, Paris
         </p>
 
         <div class="d-flex flex-wrap gap-3 mt-4">
@@ -88,7 +96,7 @@
   <div class="container">
 
     <div class="pf-section-header">
-      <h2 class="pf-section-title">Tech Stack</h2>
+      <h2 class="pf-section-title">Tech Skills</h2>
     </div>
 
     {% if skills %}

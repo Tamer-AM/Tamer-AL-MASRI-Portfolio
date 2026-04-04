@@ -1,0 +1,181 @@
+/* ================================================================
+   index.css — Home page styles
+   Depends on: layout.css (tokens + shared components)
+================================================================ */
+ 
+/* ── HERO SECTION ────────────────────────────────────────────── */
+.pf-hero {
+  padding: 6rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+ 
+.pf-hero::before {
+  /* subtle radial glow behind hero text */
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(58, 133, 255, 0.08) 0%, transparent 10%);
+  pointer-events: none;
+}
+ 
+/* ── PORTRAIT ────────────────────────────────────────────────── */
+.pf-portrait-wrap {
+  display: inline-block;
+  position: relative;
+}
+ 
+.pf-portrait-wrap::before {
+  /* animated glow ring */
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--pf-accent) 0%,
+    transparent 40%,
+    transparent 60%,
+    var(--pf-accent) 100%
+  );
+  opacity: 0.9;
+  animation: spin 8s linear infinite;
+}
+ 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+ 
+.pf-portrait {
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  border: 4px solid var(--pf-surface-2);
+  box-shadow: var(--pf-shadow);
+}
+ 
+/* ── HERO TEXT ───────────────────────────────────────────────── */
+.pf-hero-greeting {
+  font-size: 1rem;
+  color: var(--pf-accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+ 
+.pf-hero-name {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #e2e8f0 30%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+ 
+.pf-hero-role {
+  font-size: 1.1rem;
+  color: var(--pf-text-muted);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+ 
+.pf-accent-sep {
+  color: var(--pf-accent);
+  margin: 0 0.5rem;
+}
+ 
+.pf-hero-desc {
+  font-size: 1rem;
+  color: var(--pf-text-muted);
+  max-width: 500px;
+  line-height: 1.7;
+}
+ 
+/* ── SKILL CHIPS (tech stack grid on home page) ──────────────── */
+.pf-skill-chip {
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius);
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--pf-transition);
+}
+ 
+.pf-skill-chip:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: var(--pf-surface-2);
+  transform: translateY(-2px);
+}
+ 
+.pf-skill-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+ 
+.pf-skill-icon-fallback {
+  font-size: 1.75rem;
+  color: var(--pf-accent);
+}
+ 
+.pf-skill-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+}
+ 
+/* ── QUICK NAV CARDS ─────────────────────────────────────────── */
+.pf-quicknav-card {
+  display: block;
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--pf-text);
+  transition: var(--pf-transition);
+  box-shadow: var(--pf-shadow);
+}
+ 
+.pf-quicknav-card:hover {
+  color: var(--pf-text);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-4px);
+  box-shadow: var(--pf-shadow), var(--pf-shadow-blue);
+}
+ 
+.pf-quicknav-icon {
+  font-size: 2.25rem;
+  color: var(--pf-accent);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+ 
+.pf-quicknav-title {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+ 
+.pf-quicknav-desc {
+  font-size: 0.875rem;
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+ 
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .pf-hero        { padding: 3rem 0; }
+  .pf-hero-name   { font-size: 2.25rem; }
+  .pf-portrait    { width: 200px; height: 200px; }
+}

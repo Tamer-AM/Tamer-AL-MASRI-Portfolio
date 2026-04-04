@@ -1,0 +1,152 @@
+/* ================================================================
+   projects.css — Project listing and detail page styles
+   Depends on: layout.css (tokens + shared components)
+================================================================ */
+
+/* ── PROJECT CARDS ───────────────────────────────────────────── */
+.pf-project-card {
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--pf-transition);
+  box-shadow: var(--pf-shadow);
+}
+
+.pf-project-card:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-4px);
+  box-shadow: var(--pf-shadow), var(--pf-shadow-blue);
+}
+
+.pf-project-card-img-wrap {
+  height: 180px;
+  overflow: hidden;
+  background: var(--pf-surface-2);
+}
+
+.pf-project-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pf-project-card:hover .pf-project-card-img {
+  transform: scale(1.04);
+}
+
+.pf-project-card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--pf-text-faint);
+}
+
+.pf-project-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pf-project-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pf-text);
+  margin-bottom: 0.4rem;
+}
+
+.pf-project-card-desc {
+  font-size: 0.875rem;
+  color: var(--pf-text-muted);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 0.75rem;
+}
+
+/* ── FILTER TABS ─────────────────────────────────────────────── */
+.pf-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pf-filter-tab {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: var(--pf-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  transition: var(--pf-transition);
+}
+
+.pf-filter-tab:hover {
+  color: var(--pf-text);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.pf-filter-tab.active {
+  background: var(--pf-accent);
+  border-color: var(--pf-accent);
+  color: #fff;
+}
+
+/* ── PROJECT DETAIL PAGE ─────────────────────────────────────── */
+.pf-detail-header {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--pf-border);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+}
+
+.pf-back-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+}
+
+.pf-back-link:hover { color: var(--pf-accent); }
+
+.pf-detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pf-detail-short-desc {
+  font-size: 1.1rem;
+  color: var(--pf-text-muted);
+  max-width: 600px;
+}
+
+.pf-detail-preview-img {
+  max-width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  box-shadow: var(--pf-shadow);
+}
+
+.pf-detail-block {
+  margin-bottom: 3rem;
+}
+
+.pf-detail-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--pf-border);
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .pf-detail-title { font-size: 1.75rem; }
+}

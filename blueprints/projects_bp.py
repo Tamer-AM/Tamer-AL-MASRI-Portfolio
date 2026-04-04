@@ -14,3 +14,7 @@ CATEGORIES = {
 @projects_bp.route("/")
 def index():
     return render_template("projects.html")
+
+@projects_bp.route("/detail/<slug>")
+def detail():
+    return render_template('project_info.html')

@@ -4,12 +4,14 @@ from blueprints.projects_bp import projects_bp
 from blueprints.about_bp import about_bp
 from blueprints.contact_bp import contact_bp
 from db import db
- 
+import time
+from seed import seed_tables
+
 def create_app():
     app = Flask(__name__)
  
     # --- Config ---
-    app.config["SECRET_KEY"] = "change-me-before-deploy"
+    app.config["SECRET_KEY"] = "JBHWXYSGUhy^thgfertyuiuy^%$rtyuj$#$%^ujnhbgvft^&u*gtfrty*uytrEJEy^%$#689LKJHGFR4567IKJ!@#$%^g^t&hu"
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"  # stored in /instance/
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
  
@@ -28,7 +30,13 @@ def create_app():
  
     return app
  
- 
+app = create_app()
 if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True)
+    app.run()
+
+@app.cli.command("db:seed")
+def seed_database():
+    "Seeds the database with data"
+    print('clearing and seeding...')
+    seed_tables()
+    print('cleared and seeded successfully')

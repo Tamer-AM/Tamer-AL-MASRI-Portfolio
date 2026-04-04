@@ -8,10 +8,8 @@ Run this once after `flask db create` (or after first app.run())
 to get sample projects and skills so the UI renders with content.
 """
 
-from app import create_app
-#from db import db, Project, Skill
+from db_functions import insert_project, insert_contact_message, insert_skill, clear_all_db
 
-app = create_app()
 
 SAMPLE_PROJECTS = [
     {
@@ -111,9 +109,11 @@ SAMPLE_SKILLS = [
 ]
 
 
-def seed():
-    pass
-
-
-if __name__ == "__main__":
-    seed()
+def seed_tables():
+    
+    clear_all_db()
+    for dico in SAMPLE_PROJECTS:
+        insert_project(title=dico['title'],slug=dico['slug'], category=dico["category"], short_desc=dico["short_desc"], overview=dico['overview'], problem=dico['problem'], solution=dico['solution'], challenges=dico['challenges'], outcome=dico['outcome'], tech_tags=dico['tech_tags'], preview_img=dico['preview_img'], github_url=dico['github_url'], demo_url=dico['demo_url'], video_url=dico['video_url'], featured=dico['featured'], order=dico['order'])
+        
+    for dico in SAMPLE_SKILLS:
+        insert_skill(name=dico['name'], category=dico['category'], icon=dico["icon"], order=dico["order"])
