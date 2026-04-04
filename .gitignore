@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Flask / SQLite
+instance/
+*.db
+*.sqlite3
+
+# Environment variables
+.env
+.flaskenv
+
+# IDE / editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# Static uploads (add your own /static/uploads/ if you add file upload later)
+static/uploads/
+
+# CV (keep out of version control — share manually)
+static/cv/
+
+# Pytest / coverage
+.pytest_cache/
+htmlcov/
+.coverage

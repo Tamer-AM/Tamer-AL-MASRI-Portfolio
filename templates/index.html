@@ -1,0 +1,152 @@
+{% extends "layout.html" %}
+
+{% block title %}Tamer AL MASRI — CS Student & Developer{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO SECTION
+     Layout: portrait LEFT | name + tagline + CTAs RIGHT
+══════════════════════════════════════════════════════════ -->
+<section class="pf-hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- Portrait -->
+      <div class="col-lg-5 text-center">
+        <div class="pf-portrait-wrap">
+          <img
+            src="{{ url_for('static', filename='img/portrait.jpg') }}"
+            alt="Your Name"
+            class="pf-portrait"
+          />
+        </div>
+      </div>
+
+      <!-- Text content -->
+      <div class="col-lg-7">
+        <p class="pf-hero-greeting">Hi, I'm</p>
+        <h1 class="pf-hero-name">Tamer AL MASRI</h1>
+        <p class="pf-hero-role">
+          Computer Science Student at SORBONNE UNIVERSITY, France
+          <span class="pf-accent-sep">/</span>
+          Software Developer
+        </p>
+        <p class="pf-hero-desc">
+          I build clean, purposeful software — from web apps to embedded systems.
+          Passionate about solving real problems through well-structured code. blabla
+        </p>
+
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('projects.index') }}" class="btn pf-btn-primary btn-lg">
+            <i class="bi bi-grid me-2"></i>View Projects
+          </a>
+          <a href="{{ url_for('contact.index') }}" class="btn pf-btn-outline btn-lg">
+            <i class="bi bi-envelope me-2"></i>Contact Me
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FEATURED PROJECTS
+══════════════════════════════════════════════════════════ -->
+<section class="pf-section" id="featured-projects">
+  <div class="container">
+
+    <div class="pf-section-header">
+      <h2 class="pf-section-title">Featured Projects</h2>
+      <a href="{{ url_for('projects.index') }}" class="pf-section-link">
+        View all <i class="bi bi-arrow-right ms-1"></i>
+      </a>
+    </div>
+
+    {% if projects %}
+    <div class="row g-4">
+      {% for project in projects %}
+      <div class="col-md-6 col-xl-3">
+        {% include "partials/project_card.html" %}
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-secondary">No featured projects yet. Add some from the database!</p>
+    {% endif %}
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TECH STACK
+══════════════════════════════════════════════════════════ -->
+<section class="pf-section pf-section--alt" id="tech-stack">
+  <div class="container">
+
+    <div class="pf-section-header">
+      <h2 class="pf-section-title">Tech Stack</h2>
+    </div>
+
+    {% if skills %}
+    <div class="row g-3 justify-content-center">
+      {% for skill in skills %}
+      <div class="col-4 col-sm-3 col-md-2">
+        <div class="pf-skill-chip text-center">
+          {% if skill.icon %}
+            <img src="{{ skill.icon }}" alt="{{ skill.name }}" class="pf-skill-icon" />
+          {% else %}
+            <i class="bi bi-code-slash pf-skill-icon-fallback"></i>
+          {% endif %}
+          <span class="pf-skill-name">{{ skill.name }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="text-secondary text-center">Skills will appear here once added to the database.</p>
+    {% endif %}
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     QUICK NAVIGATION
+══════════════════════════════════════════════════════════ -->
+<section class="pf-section" id="quick-nav">
+  <div class="container">
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-md-4">
+        <a href="{{ url_for('projects.index') }}" class="pf-quicknav-card">
+          <i class="bi bi-folder2-open pf-quicknav-icon"></i>
+          <h5 class="pf-quicknav-title">Projects</h5>
+          <p class="pf-quicknav-desc">Browse all my personal, academic and professional projects.</p>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a href="{{ url_for('about.index') }}" class="pf-quicknav-card">
+          <i class="bi bi-person-circle pf-quicknav-icon"></i>
+          <h5 class="pf-quicknav-title">About Me</h5>
+          <p class="pf-quicknav-desc">Learn about my background, skills, and what drives me.</p>
+        </a>
+      </div>
+
+      <div class="col-md-4">
+        <a href="{{ url_for('contact.index') }}" class="pf-quicknav-card">
+          <i class="bi bi-chat-dots pf-quicknav-icon"></i>
+          <h5 class="pf-quicknav-title">Contact</h5>
+          <p class="pf-quicknav-desc">Have a project in mind or just want to connect? Reach out.</p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

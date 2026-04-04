@@ -1,0 +1,646 @@
+/* ================================================================
+   main.css — Portfolio Design System
+   Dark theme · Blue accent · Glassmorphism · Bootstrap 5 layer
+================================================================ */
+
+/* ── 1. DESIGN TOKENS ─────────────────────────────────────────── */
+:root {
+  --pf-bg:          #0d1117;
+  --pf-bg-alt:      #111820;
+  --pf-surface:     #161d27;
+  --pf-surface-2:   #1c2535;
+  --pf-border:      rgba(255, 255, 255, 0.07);
+
+  --pf-accent:      #3b82f6;          /* primary blue */
+  --pf-accent-dim:  rgba(59, 130, 246, 0.15);
+  --pf-accent-glow: rgba(59, 130, 246, 0.25);
+
+  --pf-text:        #e2e8f0;
+  --pf-text-muted:  #8b9cb5;
+  --pf-text-faint:  #4a5a72;
+
+  --pf-radius-sm:   8px;
+  --pf-radius:      12px;
+  --pf-radius-lg:   16px;
+
+  --pf-shadow:      0 4px 24px rgba(0, 0, 0, 0.35);
+  --pf-shadow-blue: 0 0 24px rgba(59, 130, 246, 0.18);
+
+  --pf-font:        'DM Sans', sans-serif;
+  --pf-font-mono:   'DM Mono', monospace;
+
+  --pf-transition:  all 0.2s ease;
+}
+
+/* ── 2. RESET / BASE ──────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--pf-font);
+  background-color: var(--pf-bg);
+  color: var(--pf-text);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+a { color: var(--pf-accent); text-decoration: none; transition: var(--pf-transition); }
+a:hover { color: #93c5fd; }
+
+/* ── 3. NAVBAR ────────────────────────────────────────────────── */
+.pf-navbar {
+  background-color: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pf-border);
+  padding: 0.75rem 0;
+  z-index: 1000;
+}
+
+.pf-brand {
+  font-family: var(--pf-font-mono);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--pf-text) !important;
+  letter-spacing: -0.01em;
+}
+
+.pf-brand-bracket {
+  color: var(--pf-accent);
+}
+
+.pf-nav-link {
+  color: var(--pf-text-muted) !important;
+  font-weight: 500;
+  font-size: 0.925rem;
+  padding: 0.4rem 0.85rem !important;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-nav-link:hover,
+.pf-nav-link.active {
+  color: var(--pf-text) !important;
+  background-color: var(--pf-accent-dim);
+}
+
+.pf-nav-link.active {
+  color: var(--pf-accent) !important;
+}
+
+/* ── 4. BUTTONS ───────────────────────────────────────────────── */
+.pf-btn-primary {
+  background-color: var(--pf-accent);
+  border: 1.5px solid var(--pf-accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-btn-primary:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+  box-shadow: var(--pf-shadow-blue);
+  transform: translateY(-1px);
+}
+
+.pf-btn-outline {
+  background-color: transparent;
+  border: 1.5px solid var(--pf-accent);
+  color: var(--pf-accent);
+  font-weight: 600;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-btn-outline:hover {
+  background-color: var(--pf-accent-dim);
+  color: var(--pf-accent);
+  transform: translateY(-1px);
+}
+
+.pf-btn-ghost {
+  background-color: var(--pf-surface-2);
+  border: 1.5px solid var(--pf-border);
+  color: var(--pf-text-muted);
+  font-weight: 500;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-btn-ghost:hover {
+  background-color: var(--pf-surface);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--pf-text);
+}
+
+/* ── 5. SECTIONS ─────────────────────────────────────────────── */
+.pf-section {
+  padding: 5rem 0;
+}
+
+.pf-section--alt {
+  background-color: var(--pf-bg-alt);
+}
+
+.pf-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.pf-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--pf-text);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.pf-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--pf-accent);
+  border-radius: 2px;
+}
+
+.pf-section-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pf-accent);
+}
+
+/* ── 6. PAGE HEADER ──────────────────────────────────────────── */
+.pf-page-header {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--pf-border);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.04) 0%, transparent 100%);
+}
+
+.pf-page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pf-page-subtitle {
+  font-size: 1.1rem;
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+
+/* ── 7. HERO ─────────────────────────────────────────────────── */
+.pf-hero {
+  padding: 6rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-hero::before {
+  /* subtle radial glow behind hero text */
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.pf-portrait-wrap {
+  display: inline-block;
+  position: relative;
+}
+
+.pf-portrait-wrap::before {
+  /* glow ring */
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    var(--pf-accent) 0%,
+    transparent 40%,
+    transparent 60%,
+    var(--pf-accent) 100%
+  );
+  opacity: 0.4;
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.pf-portrait {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  border: 4px solid var(--pf-surface-2);
+  box-shadow: var(--pf-shadow);
+}
+
+.pf-hero-greeting {
+  font-size: 1rem;
+  color: var(--pf-accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.pf-hero-name {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #e2e8f0 30%, #93c5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pf-hero-role {
+  font-size: 1.1rem;
+  color: var(--pf-text-muted);
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.pf-accent-sep {
+  color: var(--pf-accent);
+  margin: 0 0.5rem;
+}
+
+.pf-hero-desc {
+  font-size: 1rem;
+  color: var(--pf-text-muted);
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+/* ── 8. GLASS CARD ───────────────────────────────────────────── */
+.pf-glass-card {
+  background: rgba(22, 29, 39, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--pf-shadow);
+}
+
+/* ── 9. PROJECT CARDS ────────────────────────────────────────── */
+.pf-project-card {
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--pf-transition);
+  box-shadow: var(--pf-shadow);
+}
+
+.pf-project-card:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-4px);
+  box-shadow: var(--pf-shadow), var(--pf-shadow-blue);
+}
+
+.pf-project-card-img-wrap {
+  height: 180px;
+  overflow: hidden;
+  background: var(--pf-surface-2);
+}
+
+.pf-project-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pf-project-card:hover .pf-project-card-img {
+  transform: scale(1.04);
+}
+
+.pf-project-card-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--pf-text-faint);
+}
+
+.pf-project-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pf-project-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pf-text);
+  margin-bottom: 0.4rem;
+}
+
+.pf-project-card-desc {
+  font-size: 0.875rem;
+  color: var(--pf-text-muted);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 0.75rem;
+}
+
+/* ── 10. CATEGORY BADGES ─────────────────────────────────────── */
+.pf-category-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25em 0.65em;
+  border-radius: 4px;
+}
+
+.pf-category-badge--personal   { background: rgba(59,130,246,0.15); color: #93c5fd; }
+.pf-category-badge--cwh        { background: rgba(168,85,247,0.15); color: #c4b5fd; }
+.pf-category-badge--university { background: rgba(34,197,94,0.15);  color: #86efac; }
+.pf-category-badge--school     { background: rgba(251,146,60,0.15); color: #fca96b; }
+
+/* ── 11. TECH TAGS ───────────────────────────────────────────── */
+.pf-tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pf-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--pf-font-mono);
+  background: var(--pf-accent-dim);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 4px;
+  padding: 0.2em 0.6em;
+}
+
+.pf-tag--more {
+  background: var(--pf-surface-2);
+  color: var(--pf-text-faint);
+  border-color: var(--pf-border);
+}
+
+/* ── 12. SKILL CHIPS ─────────────────────────────────────────── */
+.pf-skill-chip {
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius);
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--pf-transition);
+}
+
+.pf-skill-chip:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  background: var(--pf-surface-2);
+  transform: translateY(-2px);
+}
+
+.pf-skill-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.pf-skill-icon-fallback {
+  font-size: 1.75rem;
+  color: var(--pf-accent);
+}
+
+.pf-skill-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+}
+
+/* ── 13. QUICK NAV CARDS ─────────────────────────────────────── */
+.pf-quicknav-card {
+  display: block;
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  color: var(--pf-text);
+  transition: var(--pf-transition);
+  box-shadow: var(--pf-shadow);
+}
+
+.pf-quicknav-card:hover {
+  color: var(--pf-text);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-4px);
+  box-shadow: var(--pf-shadow), var(--pf-shadow-blue);
+}
+
+.pf-quicknav-icon {
+  font-size: 2.25rem;
+  color: var(--pf-accent);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.pf-quicknav-title {
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.pf-quicknav-desc {
+  font-size: 0.875rem;
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+
+/* ── 14. FILTER TABS ─────────────────────────────────────────── */
+.pf-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pf-filter-tab {
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border-radius: var(--pf-radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  transition: var(--pf-transition);
+}
+
+.pf-filter-tab:hover {
+  color: var(--pf-text);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.pf-filter-tab.active {
+  background: var(--pf-accent);
+  border-color: var(--pf-accent);
+  color: #fff;
+}
+
+/* ── 15. PROJECT DETAIL ──────────────────────────────────────── */
+.pf-detail-header {
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--pf-border);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+}
+
+.pf-back-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--pf-text-muted);
+}
+
+.pf-back-link:hover { color: var(--pf-accent); }
+
+.pf-detail-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pf-detail-short-desc {
+  font-size: 1.1rem;
+  color: var(--pf-text-muted);
+  max-width: 600px;
+}
+
+.pf-detail-preview-img {
+  max-width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  box-shadow: var(--pf-shadow);
+}
+
+.pf-detail-block {
+  margin-bottom: 3rem;
+}
+
+.pf-detail-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--pf-border);
+}
+
+.pf-sidebar-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-text-faint);
+  margin-bottom: 1rem;
+}
+
+/* ── 16. ABOUT PAGE ──────────────────────────────────────────── */
+.pf-about-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.pf-skill-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* ── 17. CONTACT PAGE ────────────────────────────────────────── */
+.pf-input {
+  background: var(--pf-surface-2) !important;
+  border: 1px solid var(--pf-border) !important;
+  color: var(--pf-text) !important;
+  border-radius: var(--pf-radius-sm) !important;
+  padding: 0.75rem 1rem !important;
+  transition: var(--pf-transition);
+}
+
+.pf-input:focus {
+  border-color: var(--pf-accent) !important;
+  box-shadow: 0 0 0 3px var(--pf-accent-dim) !important;
+  outline: none !important;
+}
+
+.pf-input::placeholder { color: var(--pf-text-faint) !important; }
+
+.pf-contact-link {
+  display: flex;
+  align-items: center;
+  color: var(--pf-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pf-contact-link:hover { color: var(--pf-accent); }
+
+/* ── 18. ACCENT UTILITY ──────────────────────────────────────── */
+.pf-accent { color: var(--pf-accent) !important; }
+
+/* ── 19. FOOTER ──────────────────────────────────────────────── */
+.pf-footer {
+  background-color: var(--pf-bg-alt);
+  border-top: 1px solid var(--pf-border);
+}
+
+.pf-footer-copy {
+  font-size: 0.85rem;
+  color: var(--pf-text-faint);
+}
+
+.pf-footer-link {
+  color: var(--pf-text-faint);
+  transition: var(--pf-transition);
+}
+
+.pf-footer-link:hover { color: var(--pf-accent); }
+
+/* ── 20. RESPONSIVE TWEAKS ───────────────────────────────────── */
+@media (max-width: 767px) {
+  .pf-hero { padding: 3rem 0; }
+  .pf-hero-name { font-size: 2.25rem; }
+  .pf-portrait { width: 200px; height: 200px; }
+  .pf-section { padding: 3rem 0; }
+  .pf-section-header { flex-direction: column; gap: 0.5rem; }
+  .pf-detail-title { font-size: 1.75rem; }
+}
