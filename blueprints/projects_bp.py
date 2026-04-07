@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, abort
-#from db import Project
+from db_functions import select_all_projects, select_projects_category
  
 projects_bp = Blueprint("projects", __name__)
  
@@ -13,7 +13,12 @@ CATEGORIES = {
  
 @projects_bp.route("/")
 def index():
-    return render_template("projects.html")
+    active_category = request.args.get("category", "all")
+    if active_category == 'all':
+        projects = select_all_projects()
+    else:
+        projects = select_projects_category(active_category)
+    return render_template("projects.html", projects=projects, categories=CATEGORIES, active_category=active_category)
 
 @projects_bp.route("/detail/<slug>")
 def detail():

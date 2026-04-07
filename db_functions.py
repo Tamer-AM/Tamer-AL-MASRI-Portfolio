@@ -15,18 +15,31 @@ def insert_skill(name:str, category:str, icon:str, order:int):
     db.session.commit()
 
 
-def insert_contact_message(name:str, email:str, message:str, date:str=datetime.today().strftime('%d-%m-%Y')):
-    contact = ContactMessage(name=name, email=email, message=message, date=date)
+def insert_contact_message(name:str, email:str, message:str, date:str=datetime.today()):
+    contact = ContactMessage(name=name, email=email, message=message, created_at=date)
     db.session.add(contact)
     db.session.commit()
 
 ###-----------------------------------------
 ###selections
+def select_all_projects():
+    query = select(Project)
+    result = db.session.scalars(query).all()
+    return result
+
 def select_featured_projects():
     query = select(Project).where(Project.featured == True)
     result = db.session.scalars(query).all()
     return result
 
+def select_projects_category(category):
+    query = select(Project).where(Project.category == category)
+    result = db.session.scalars(query).all()
+    return result
+def select_all_skills():
+    query = select(Skill)
+    result = db.session.scalars(query).all()
+    return result
 
 
 ###deletions

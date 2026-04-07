@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_mail import Mail, Message
 from blueprints.main_bp import main_bp
 from blueprints.projects_bp import projects_bp
 from blueprints.about_bp import about_bp
@@ -31,6 +32,8 @@ def create_app():
     return app
  
 app = create_app()
+
+
 if __name__ == "__main__":
     app.run()
 

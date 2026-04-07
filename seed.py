@@ -87,25 +87,25 @@ SAMPLE_PROJECTS = [
 ]
 
 SAMPLE_SKILLS = [
-    # Frontend
-    {"name": "HTML/CSS",    "category": "frontend", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",      "order": 1},
-    {"name": "JavaScript",  "category": "frontend", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", "order": 2},
-    {"name": "Bootstrap",   "category": "frontend", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",  "order": 3},
+    # Languages
+    {"name": "Python",      "category": "languages",  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",        "order": 1},
+    
+    {"name": "C",       "category": "languages",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",         "order": 2},
+    {"name": "Java",       "category": "languages",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",         "order": 3},
+    {"name": "HTML/CSS",    "category": "languages", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",      "order": 4},
+    {"name": "JavaScript",  "category": "languages", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", "order": 5},
     
     # Backend
-    {"name": "Python",      "category": "backend",  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",        "order": 1},
-    {"name": "Flask",       "category": "backend",  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",          "order": 2},
-    {"name": "SQLite",      "category": "backend",  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",        "order": 3},
+    {"name": "Flask",       "category": "backend",  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",          "order": 1},
+    {"name": "SQLite",      "category": "backend",  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",        "order": 2},
+    {"name": "SQLAlchemy",  "category": "backend",  "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlalchemy/sqlalchemy-original.svg",  "order": 3},
 
     # Tools
     {"name": "Git",         "category": "tools",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",             "order": 1},
-    {"name": "GitHub",      "category": "tools",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",       "order": 2},
+    {"name": "GitHub",      "category": "tools",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original-wordmark.svg",       "order": 2},
     {"name": "VS Code",     "category": "tools",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",       "order": 3},
-    {"name": "Linux",       "category": "tools",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",         "order": 4},
-
-    # Languages
-    {"name": "C",       "category": "languages",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/C-original.svg",         "order": 1},
-    {"name": "Java",       "category": "languages",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/java-original.svg",         "order": 2}
+    {"name": "Bootstrap",   "category": "tools", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",  "order": 4},
+    {"name": "Linux",       "category": "tools",    "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",         "order": 5}
 ]
 
 

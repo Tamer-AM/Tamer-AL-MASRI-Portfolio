@@ -11,5 +11,104 @@
 
 
 
+<section class="pf-page-header">
+  <div class="container">
+    <h1 class="pf-page-title">Get In Touch</h1>
+    <p class="pf-page-subtitle">
+      Have a project in mind, a question, or just want to say hi?
+    </p>
+  </div>
+</section>
+
+<section class="pf-section">
+  <div class="container">
+    <div class="row g-5 justify-content-center">
+
+      <!-- Contact form -->
+      <div class="col-lg-7">
+        <div class="pf-glass-card">
+          <h4 class="mb-4">Send a Message</h4>
+          <form method="POST" action="{{ url_for('contact.index') }}" novalidate>
+
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="contact-name"
+                class="form-control pf-input"
+                placeholder="Your full name"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="contact-email"
+                class="form-control pf-input"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+
+            <div class="mb-4">
+              <label for="message" class="form-label">Message</label>
+              <textarea
+                id="message"
+                name="contact-message"
+                rows="6"
+                class="form-control pf-input"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn pf-btn-primary w-100 btn-lg">
+              <i class="bi bi-send me-2"></i>Send Message
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact info sidebar -->
+      <div class="col-lg-4 d-flex flex-column gap-3">
+
+        <div class="pf-glass-card">
+          <h6 class="pf-sidebar-heading">Direct Contact</h6>
+          <div class="d-flex flex-column gap-3">
+            <a href="mailto:tamergmasri@gmail.com" class="pf-contact-link">
+              <i class="bi bi-envelope-fill pf-accent me-3 fs-5"></i>
+              tamergmasri@gmail.com
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank"
+               rel="noopener" class="pf-contact-link">
+              <i class="bi bi-linkedin pf-accent me-3 fs-5"></i>
+              linkedin.com/in/yourusername
+            </a>
+            <a href="https://github.com/yourusername" target="_blank"
+               rel="noopener" class="pf-contact-link">
+              <i class="bi bi-github pf-accent me-3 fs-5"></i>
+              github.com/Tamer-AM
+            </a>
+          </div>
+        </div>
+
+        <div class="pf-glass-card">
+          <h6 class="pf-sidebar-heading">Response Time</h6>
+          <p class="text-muted mb-0" style="font-size: 1.0rem; color:rgba(245, 245, 245, 0.897);">
+            I typically reply within 24–48 hours. For urgent matters,
+            reach out directly via email.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
 
 {% endblock %}
