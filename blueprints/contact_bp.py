@@ -1,11 +1,10 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
+from flask import Blueprint, render_template, request, flash, redirect, url_for
 from flask_mail import Message, Mail
 from db_functions import insert_contact_message
  
 contact_bp = Blueprint("contact", __name__)
-# with current_app.app_context():
-#     mail = Mail()
-    
+
+mail = Mail()    
  
  
 @contact_bp.route("/", methods=["GET", "POST"])
@@ -29,19 +28,19 @@ def index():
         
         flash("Thanks for reaching out! I'll get back to you soon.", "success")
         insert_contact_message(name, email, message)
-        # msg = Message(
-        #     subject=f"New contact message from {name} - PORTFOLIO",
-        #     sender=email,
-        #     recipients=["your_email@gmail.com"],
-        #     body=f""" You got new message from your: PORTFOLIO WEBSITE
-        #         Name: {name}
-        #         Email: {email}
+        msg = Message(
+            subject=f"New contact message from {name} - PORTFOLIO",
+            sender="tamergmasri@gmail.com",
+            recipients=["tamergmasri@gmail.com"],
+            body=f""" You got new message from your: PORTFOLIO WEBSITE
+                Name: {name}
+                Email: {email}
 
-        #         Message:
-        #         {message}
-        #         """
-        #     )
+                Message:
+                {message}
+                """
+            )
 
-        # mail.send(msg)
+        mail.send(msg)
 
     return render_template("contact.html")

@@ -174,3 +174,11 @@
 </section>
 
 {% endblock %}
+
+
+{% block scripts %} 
+<script>
+  var body = document.getElementById('pf-body');
+  body.classList.add("{{project.category}}");
+</script>
+{% endblock %}

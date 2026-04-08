@@ -3,7 +3,7 @@ from flask_mail import Mail, Message
 from blueprints.main_bp import main_bp
 from blueprints.projects_bp import projects_bp
 from blueprints.about_bp import about_bp
-from blueprints.contact_bp import contact_bp
+from blueprints.contact_bp import contact_bp, mail
 from db import db
 import time
 from seed import seed_tables
@@ -15,9 +15,17 @@ def create_app():
     app.config["SECRET_KEY"] = "JBHWXYSGUhy^thgfertyuiuy^%$rtyuj$#$%^ujnhbgvft^&u*gtfrty*uytrEJEy^%$#689LKJHGFR4567IKJ!@#$%^g^t&hu"
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///portfolio.db"  # stored in /instance/
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIL_PORT'] = 587
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USERNAME'] = 'tamergmasri@gmail.com'
+    app.config['MAIL_PASSWORD'] = 'wfjs mnik okmi ybsl'
+
  
     # --- Extensions ---
     db.init_app(app)
+    mail.init_app(app)
  
     # --- Blueprints ---
     app.register_blueprint(main_bp)

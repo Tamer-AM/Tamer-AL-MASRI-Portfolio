@@ -2,7 +2,20 @@
    projects.css — Project listing and detail page styles
    Depends on: layout.css (tokens + shared components)
 ================================================================ */
+/* ── PROJECT INFO BGS ───────────────────────────────────────────── */
+.university{
+  background: linear-gradient(to bottom, #003800 0%, #000000 100%);
+}
 
+.school{
+  background: linear-gradient(to bottom, #4e2801 0%, #000000 100%);
+}
+.cwh{
+  background: linear-gradient(to bottom, #380038 0%, #000000 100%);
+}
+.personal{
+  background: linear-gradient(to bottom, #123b46 0%, #000000 100%);
+}
 /* ── PROJECT CARDS ───────────────────────────────────────────── */
 .pf-project-card {
   background: var(--pf-surface);

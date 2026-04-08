@@ -20,6 +20,7 @@ def insert_contact_message(name:str, email:str, message:str, date:str=datetime.t
     db.session.add(contact)
     db.session.commit()
 
+
 ###-----------------------------------------
 ###selections
 def select_all_projects():
@@ -36,6 +37,13 @@ def select_projects_category(category):
     query = select(Project).where(Project.category == category)
     result = db.session.scalars(query).all()
     return result
+
+
+def select_project_form_slug(slug):
+    query = select(Project).where(Project.slug == slug)
+    result = db.session.scalars(query).one()
+    return result
+
 def select_all_skills():
     query = select(Skill)
     result = db.session.scalars(query).all()
