@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block title %} About me {% endblock %}
+
+
+{% block head %}
+
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<section class="pf-page-header">
+  <div class="container">
+    <h1 class="pf-page-title">About Me</h1>
+    <p class="pf-page-subtitle">The person behind the code.</p>
+  </div>
+</section>
+ 
+<section class="pf-section">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+ 
+      <!-- Bio -->
+      <div class="col-lg-5">
+        <div class="pf-glass-card">
+          <img
+            src="{{ url_for('static', filename='images/Tamer formal pic zoomed.jpeg') }}"
+            alt="Tamer AL MASRI"
+            class="rounded-3 w-100 mb-4 pf-about-img pf-clickable-img"
+            style="object-fit: cover; max-height: 350px; object-position: 60% 40%"
+          />
+          <h2 class="pf-about-name">Tamer AL MASRI</h2>
+          <p class="pf-accent mb-3">CS Student &amp; Developer</p>
+          <p>
+            Short bio goes here. A couple of sentences about your background,
+            what you study, where you're headed, and what excites you in tech.
+          </p>
+          <p>
+            A second paragraph about interests, e.g.: software architecture,
+            data engineering, embedded systems — whatever fits you.
+          </p>
+ 
+          <a
+            href="{{ url_for('static', filename='cv/your-cv.pdf') }}"
+            download
+            class="btn pf-btn-primary mt-3"
+          >
+            <i class="bi bi-download me-2"></i>Download CV
+          </a>
+        </div>
+      </div>
+ 
+      <!-- Skills -->
+      <div class="col-lg-7">
+ 
+        {% set category_labels = {
+          'languages': ('Languages', 'bi-code-slash'),
+          'backend':  ('Backend',  'bi-server'),
+          'tools':    ('Tools & Technologies', 'bi-wrench-adjustable')
+        } %}
+ 
+        {% for cat_key, skills in skills_dict.items() %}
+        {% set label, icon = category_labels.get(cat_key, (cat_key|capitalize, 'bi-code')) %}
+        <div class="pf-skill-group mb-4">
+          <h5 class="pf-skill-group-title">
+            <i class="bi {{ icon }} me-2 pf-accent"></i>{{ label }}
+          </h5>
+          <div class="row g-2">
+            {% for skill in skills %}
+            <div class="col-6 col-sm-4 col-md-3">
+              <div class="pf-skill-chip text-center">
+                {% if skill.icon %}
+                  <img src="{{ skill.icon }}" alt="{{ skill.name }}" class="pf-skill-icon" />
+                {% else %}
+                  <i class="bi bi-code-slash pf-skill-icon-fallback"></i>
+                {% endif %}
+                <span class="pf-skill-name">{{ skill.name }}</span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+ 
+        {% if not skills_dict %}
+        <p class="text-secondary">Skills will appear here once added to the database.</p>
+        {% endif %}
+ 
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Image Popup -->
+<div id="img-popup" class="pf-img-popup">
+  <span class="pf-img-close">&times;</span>
+  <img class="pf-img-popup-content" id="popup-img">
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const img = document.querySelector(".pf-clickable-img");
+  const popup = document.getElementById("img-popup");
+  const popupImg = document.getElementById("popup-img");
+  const closeBtn = document.querySelector(".pf-img-close");
+
+  img.addEventListener("click", () => {
+    popup.style.display = "block";
+    popupImg.src = img.src;
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.style.display = "none";
+    }
+  });
+</script>
+{% endblock %}

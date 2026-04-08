@@ -1,0 +1,28 @@
+.pf-input {
+  background: var(--pf-surface-2) !important;
+  border: 1px solid var(--pf-border) !important;
+  color: var(--pf-text) !important;
+  border-radius: var(--pf-radius-sm) !important;
+  padding: 0.75rem 1rem !important;
+  transition: var(--pf-transition);
+}
+ 
+.pf-input:focus {
+  border-color: var(--pf-accent) !important;
+  box-shadow: 0 0 0 3px var(--pf-accent-dim) !important;
+  outline: none !important;
+}
+ 
+.pf-input::placeholder { color: var(--pf-text-faint) !important; }
+ 
+/* ── DIRECT CONTACT LINKS ────────────────────────────────────── */
+.pf-contact-link {
+  display: flex;
+  align-items: center;
+  color: var(--pf-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+ 
+.pf-contact-link:hover { color: var(--pf-accent); }
+ 

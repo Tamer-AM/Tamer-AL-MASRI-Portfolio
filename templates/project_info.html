@@ -1,0 +1,184 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ project.title }} — Tamer AL MASRI{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<!-- ── Header ─────────────────────────────────────────── -->
+<section class="pf-detail-header">
+  <div class="container">
+    <a href="{{ url_for('projects.index') }}" class="pf-back-link">
+      <i class="bi bi-arrow-left me-1"></i> All Projects
+    </a>
+
+    <div class="row align-items-end mt-3 g-4">
+      <div class="col-lg-8">
+        <span class="pf-category-badge pf-category-badge--{{ project.category }}">
+          {{ project.category | capitalize }}
+        </span>
+        <h1 class="pf-detail-title mt-2">{{ project.title }}</h1>
+        <p class="pf-detail-short-desc">{{ project.short_desc }}</p>
+
+        <!-- Tech tags -->
+        {% if project.tags_list %}
+        <div class="pf-tags-wrap mt-3">
+          {% for tag in project.tags_list %}
+            <span class="pf-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Action buttons -->
+        <div class="d-flex flex-wrap gap-3 mt-4">
+          {% if project.github_url %}
+          <a href="{{ project.github_url }}" target="_blank" rel="noopener"
+             class="btn pf-btn-primary">
+            <i class="bi bi-github me-2"></i>View Code
+          </a>
+          {% endif %}
+          {% if project.demo_url %}
+          <a href="{{ project.demo_url }}" target="_blank" rel="noopener"
+             class="btn pf-btn-outline">
+            <i class="bi bi-box-arrow-up-right me-2"></i>Live Demo
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Preview image (right column) -->
+      {% if project.preview_img %}
+      <div class="col-lg-4 text-center">
+        <img
+          src="{{ url_for('static', filename='img/' + project.preview_img) }}"
+          alt="{{ project.title }} preview"
+          class="pf-detail-preview-img rounded-3"
+        />
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Main body ──────────────────────────────────────── -->
+<section class="pf-section">
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- Left: case study text -->
+      <div class="col-lg-8">
+
+        {% if project.overview %}
+        <div class="pf-detail-block">
+          <h2 class="pf-detail-section-title">
+            <i class="bi bi-info-circle me-2 pf-accent"></i>Overview
+          </h2>
+          <p>{{ project.overview }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.problem %}
+        <div class="pf-detail-block">
+          <h2 class="pf-detail-section-title">
+            <i class="bi bi-exclamation-diamond me-2 pf-accent"></i>Problem
+          </h2>
+          <p>{{ project.problem }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.solution %}
+        <div class="pf-detail-block">
+          <h2 class="pf-detail-section-title">
+            <i class="bi bi-lightbulb me-2 pf-accent"></i>Solution &amp; Approach
+          </h2>
+          <p>{{ project.solution }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.challenges %}
+        <div class="pf-detail-block">
+          <h2 class="pf-detail-section-title">
+            <i class="bi bi-tools me-2 pf-accent"></i>Challenges &amp; How I Solved Them
+          </h2>
+          <p>{{ project.challenges }}</p>
+        </div>
+        {% endif %}
+
+        {% if project.outcome %}
+        <div class="pf-detail-block">
+          <h2 class="pf-detail-section-title">
+            <i class="bi bi-trophy me-2 pf-accent"></i>Outcome
+          </h2>
+          <p>{{ project.outcome }}</p>
+        </div>
+        {% endif %}
+
+      </div>
+
+      <!-- Right: sidebar -->
+      <div class="col-lg-4">
+
+        <!-- Technologies -->
+        {% if project.tags_list %}
+        <div class="pf-glass-card mb-4">
+          <h6 class="pf-sidebar-heading">Technologies</h6>
+          <div class="pf-tags-wrap">
+            {% for tag in project.tags_list %}
+              <span class="pf-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Links -->
+        <div class="pf-glass-card mb-4">
+          <h6 class="pf-sidebar-heading">Links</h6>
+          <div class="d-flex flex-column gap-2">
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" rel="noopener"
+               class="btn pf-btn-primary w-100">
+              <i class="bi bi-github me-2"></i>GitHub Repository
+            </a>
+            {% endif %}
+            {% if project.demo_url %}
+            <a href="{{ project.demo_url }}" target="_blank" rel="noopener"
+               class="btn pf-btn-outline w-100">
+              <i class="bi bi-box-arrow-up-right me-2"></i>Live Demo
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Video demo -->
+        {% if project.video_url %}
+        <div class="pf-glass-card">
+          <h6 class="pf-sidebar-heading">Video Demo</h6>
+          <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
+            <iframe
+              src="{{ project.video_url }}"
+              title="{{ project.title }} demo"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+
+{% block scripts %} 
+<script>
+  var body = document.getElementById('pf-body');
+  body.classList.add("{{project.category}}");
+</script>
+{% endblock %}

@@ -1,0 +1,66 @@
+/* ================================================================
+   about.css — About page styles
+   Depends on: layout.css (tokens + shared components)
+================================================================ */
+
+/* ── BIO SECTION ─────────────────────────────────────────────── */
+.pf-about-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+/* ── SKILL GROUPS ────────────────────────────────────────────── */
+.pf-skill-group {
+  border-bottom: 1px solid var(--pf-border);
+  padding-bottom: 2rem;
+}
+
+.pf-skill-group:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.pf-skill-group-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+
+.pf-img-popup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.pf-img-popup-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 12px;
+}
+
+.pf-img-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.pf-clickable-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pf-clickable-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}

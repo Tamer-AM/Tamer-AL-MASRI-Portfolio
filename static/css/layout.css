@@ -1,0 +1,297 @@
+/* ================================================================
+   layout.css — Global design tokens, reset, shared components
+   Loaded on every page via layout.html
+================================================================ */
+
+/* ── 1. DESIGN TOKENS ─────────────────────────────────────────── */
+:root {
+  --pf-bg:          #0d1117;
+  --pf-bg-alt:      #111820;
+  --pf-surface:     #161d27;
+  --pf-surface-2:   #1c2535;
+  --pf-border:      rgba(255, 255, 255, 0.07);
+
+  --pf-accent:      #2768d1;
+  --pf-accent-dim:  rgba(59, 130, 246, 0.15);
+  --pf-accent-glow: rgba(59, 130, 246, 0.25);
+
+  --pf-text:        whitesmoke;
+  --pf-text-muted:  #8b9cb5;
+  --pf-text-faint:  #4a5a72;
+
+  --pf-radius-sm:   8px;
+  --pf-radius:      12px;
+  --pf-radius-lg:   16px;
+
+  --pf-shadow:      0 4px 24px rgba(0, 0, 0, 0.35);
+  --pf-shadow-blue: 0 0 24px rgba(59, 130, 246, 0.18);
+
+  --pf-font:        'DM Sans', sans-serif;
+  --pf-font-mono:   'DM Mono', monospace;
+
+  --pf-transition:  all 0.2s ease;
+}
+
+/* ── 2. RESET / BASE ──────────────────────────────────────────── */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--pf-font);
+  background-color: var(pf-bg);
+  color: var(--pf-text);
+  line-height: 1.65;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to bottom, #000044 0%, #000000 100%);
+}
+
+main { 
+    flex: 1; 
+}
+
+a { color: var(--pf-accent); text-decoration: none; transition: var(--pf-transition); }
+a:hover { color: #93c5fd; }
+
+/* ── 3. NAVBAR ────────────────────────────────────────────────── */
+.pf-navbar {
+  background-color: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pf-border);
+  padding: 0.75rem 0;
+  z-index: 1000;
+}
+
+.pf-brand {
+  font-family: var(--pf-font-mono);
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--pf-text) !important;
+  letter-spacing: -0.01em;
+}
+
+.pf-brand-bracket {
+  color: var(--pf-accent);
+}
+
+.pf-nav-link {
+  color: var(--pf-text-muted) !important;
+  font-weight: 500;
+  font-size: 0.925rem;
+  padding: 0.4rem 0.85rem !important;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-nav-link:hover,
+.pf-nav-link.active {
+  color: var(--pf-text) !important;
+  background-color: var(--pf-accent-dim);
+}
+
+.pf-nav-link.active {
+  color: var(--pf-accent) !important;
+}
+
+/* ── 4. BUTTONS ───────────────────────────────────────────────── */
+.pf-btn-primary {
+  background-color: var(--pf-accent);
+  border: 1.5px solid var(--pf-accent);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-btn-primary:hover {
+  background-color: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+  box-shadow: var(--pf-shadow-blue);
+  transform: translateY(-1px);
+}
+
+.pf-btn-outline {
+  background-color: transparent;
+  border: 1.5px solid var(--pf-accent);
+  color: var(--pf-accent);
+  font-weight: 600;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-btn-outline:hover {
+  background-color: var(--pf-accent-dim);
+  color: var(--pf-accent);
+  transform: translateY(-1px);
+}
+
+.pf-btn-ghost {
+  background-color: var(--pf-surface-2);
+  border: 1.5px solid var(--pf-border);
+  color: var(--pf-text-muted);
+  font-weight: 500;
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+}
+
+.pf-btn-ghost:hover {
+  background-color: var(--pf-surface);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--pf-text);
+}
+
+/* ── 5. SHARED SECTION STRUCTURE ─────────────────────────────── */
+.pf-section {
+  padding: 5rem 0;
+}
+
+.pf-section--alt {
+  background-color: var(--pf-bg-alt);
+}
+
+.pf-section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.pf-section-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--pf-text);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.pf-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--pf-accent);
+  border-radius: 2px;
+}
+
+.pf-section-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pf-accent);
+}
+
+/* ── 6. PAGE HEADER (projects / about / contact pages) ────────── */
+.pf-page-header {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--pf-border);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.04) 0%, transparent 100%);
+}
+
+.pf-page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.pf-page-subtitle {
+  font-size: 1.1rem;
+  color: var(--pf-text-muted);
+  margin: 0;
+}
+
+/* ── 7. GLASS CARD (shared across pages) ─────────────────────── */
+.pf-glass-card {
+  background: rgba(22, 29, 39, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--pf-shadow);
+}
+
+/* ── 8. SHARED COMPONENTS ────────────────────────────────────── */
+
+/* Category badges — used on cards AND detail pages */
+.pf-category-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25em 0.65em;
+  border-radius: 4px;
+}
+
+.pf-category-badge--personal   { background: rgba(59,130,246,0.15); color: #93c5fd; }
+.pf-category-badge--cwh        { background: rgba(168,85,247,0.15); color: #c4b5fd; }
+.pf-category-badge--university { background: rgba(34,197,94,0.15);  color: #86efac; }
+.pf-category-badge--school     { background: rgba(251,146,60,0.15); color: #fca96b; }
+
+/* Tech tags — used on cards, detail page, about page */
+.pf-tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pf-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--pf-font-mono);
+  background: var(--pf-accent-dim);
+  color: #93c5fd;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 4px;
+  padding: 0.2em 0.6em;
+}
+
+.pf-tag--more {
+  background: var(--pf-surface-2);
+  color: var(--pf-text-faint);
+  border-color: var(--pf-border);
+}
+
+/* Sidebar heading — used in detail and contact pages */
+.pf-sidebar-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-text-faint);
+  margin-bottom: 1rem;
+}
+
+/* Accent colour utility */
+.pf-accent { color: var(--pf-accent) !important; }
+
+/* ── 9. FOOTER ───────────────────────────────────────────────── */
+.pf-footer {
+  background-color: var(--pf-bg-alt);
+  border-top: 1px solid var(--pf-border);
+}
+
+.pf-footer-copy {
+  font-size: 0.85rem;
+  color: var(--pf-text-faint);
+}
+
+.pf-footer-link {
+  color: var(--pf-text-faint);
+  transition: var(--pf-transition);
+}
+
+.pf-footer-link:hover { color: var(--pf-accent); }
+
+/* ── 10. GLOBAL RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 767px) {
+  .pf-section        { padding: 3rem 0; }
+  .pf-section-header { flex-direction: column; gap: 0.5rem; }
+}
