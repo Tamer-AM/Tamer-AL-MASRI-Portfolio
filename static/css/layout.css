@@ -79,6 +79,9 @@ a:hover { color: #93c5fd; }
   color: var(--pf-accent);
 }
 
+.pf-brand:hover .pf-brand-bracket{
+  color:var(--pf-text);
+}
 .pf-nav-link {
   color: var(--pf-text-muted) !important;
   font-weight: 500;
