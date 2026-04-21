@@ -31,60 +31,157 @@ SAMPLE_PROJECTS = [
         "order": 1,
     },
     {
-        "title": "Data Dashboard",
-        "slug": "data-dashboard",
+        "title": "Enterprise Deliberation Platform",
+        "slug": "enterprise-deliberation-platform",
         "category": "university",
-        "short_desc": "Interactive data visualisation dashboard built for a data-engineering course.",
-        "overview": "Semester project for the Data Engineering module — visualise a public dataset in real time.",
-        "problem": "Raw CSV data from the city open-data portal was hard to interpret at a glance.",
-        "solution": "Ingested data with pandas, stored aggregates in PostgreSQL, served charts via Chart.js.",
-        "challenges": "Handling 2M+ rows without blocking the UI — solved with server-side aggregation and lazy loading.",
-        "outcome": "Achieved top grade; dashboard adopted as a course reference by the lecturer.",
-        "tech_tags": "Python,Flask,PostgreSQL,Chart.js,pandas",
+        "short_desc": "A collaborative internal discussion platform for companies, featuring structured debates, hierarchy-based permissions, and group-targeted discussions.",
+
+        "overview": "A web application designed for enterprise environments where employees, managers, and executives can create, participate in, and moderate internal discussions. The platform supports open debates, closed decision-oriented threads, nested replies, role-based access control, and team/group visibility systems.",
+
+        "problem": "Traditional messaging tools are noisy and unstructured for internal decision-making. Companies often lack a dedicated space for organized deliberation, role-aware participation, and traceable debates tied to departments or project groups.",
+
+        "solution": "Built a custom Flask-based platform with SQLite relational modeling to support hierarchical user roles, group-scoped discussions, likes/dislikes, threaded comments, AJAX interactions, and multiple discussion types with distinct behaviors.",
+
+        "challenges": "Designing a scalable relational schema for users, groups, memberships, discussions, comments, and reactions while avoiding duplicate query results in many-to-many joins. Implementing dynamic UI behavior with JavaScript (live likes, dropdown actions, lazy-loaded replies) and maintaining clean architecture between discussion types required careful backend/frontend separation.",
+
+        "outcome": "Delivered a functional prototype demonstrating real-world product thinking, backend architecture, SQL design, permission systems, and interactive frontend features. The project showcases the ability to build business-oriented software beyond tutorial-level CRUD apps.",
+
+        "tech_tags": "Python,Flask,SQLite,JavaScript,HTML,CSS,Jinja2,SQL",
+
         "preview_img": None,
-        "github_url": "https://github.com/yourusername/data-dashboard",
+
+        "github_url": None,
+
         "demo_url": None,
+
         "video_url": None,
+
         "featured": True,
-        "order": 2,
+
+        "order": 2
     },
     {
-        "title": "Sensor Monitor",
-        "slug": "sensor-monitor",
-        "category": "school",
-        "short_desc": "Raspberry Pi IoT system that logs temperature & humidity and alerts via Telegram.",
-        "overview": "Built for a hardware-software integration module in high school.",
-        "problem": "The school server room had no automated temperature monitoring; overheating went unnoticed.",
-        "solution": "DHT22 sensor → RPi GPIO → Python daemon → SQLite log → Telegram bot alerts.",
-        "challenges": "GPIO noise causing false readings; solved with a rolling average filter.",
-        "outcome": "System ran for 6 months without false positives; school adopted it permanently.",
-        "tech_tags": "Python,Raspberry Pi,SQLite,Telegram API,GPIO",
+        "title": "Ensemble Data Science Competition Project",
+        "slug": "ensemble-data-science-competition",
+        "category": "university",
+        "short_desc": "A competitive machine learning project combining multiple classifiers, feature selection, and weighted voting to achieve a top leaderboard ranking.",
+
+        "overview": "A university data science project focused on building high-performing predictive models on a real dataset under competitive evaluation. Multiple machine learning algorithms were implemented, compared, tuned, and combined into an ensemble pipeline that significantly outperformed individual models.",
+
+        "problem": "Single-model approaches often plateaued in accuracy or reacted differently to noisy, categorical, and numerical features. The challenge was to identify the strengths of each algorithm and combine them into a more robust final predictor.",
+
+        "solution": "Implemented Naïve Bayes, k-NN with cross-validation, Decision Trees, and Random Forest models using Python scientific libraries. Added preprocessing workflows, feature selection methods such as Cramér's V for categorical relevance, parameter search utilities, and a weighted voting ensemble to merge predictions.",
+
+        "challenges": "Balancing feature engineering, preprocessing quality, hyperparameter tuning cost, and model variance required repeated experimentation. Building reusable validation utilities and combining heterogeneous models into a stable ensemble was the main technical challenge.",
+
+        "outcome": "The final ensemble model substantially outperformed the standalone classifiers and finished tied for #1 on the competition leaderboard. The project demonstrated strong analytical reasoning, experimentation discipline, and practical machine learning workflow design.",
+
+        "tech_tags": "Data Science,Python,Pandas,NumPy,Jupyter,Machine Learning,Cross Validation,Ensemble Learning",
+
         "preview_img": None,
-        "github_url": "https://github.com/yourusername/sensor-monitor",
+
+        "github_url": None,
+
         "demo_url": None,
-        "video_url": "https://www.youtube.com/embed/dQw4w9WgXcQ",  # replace with real demo
+
+        "video_url": None,
+
         "featured": True,
-        "order": 3,
+
+        "order": 3
     },
     {
-        "title": "CodeWizards Lesson Builder",
-        "slug": "cwh-lesson-builder",
+        "title": "Motion-Control Karting Game",
+        "slug": "motion-control-karting-game",
+        "category": "university",
+        "short_desc": "A Raspberry Pi-powered karting game using motion sensors as steering controllers, combined with a web interface and race time tracking.",
+
+        "overview": "An interactive racing game project combining embedded systems and web technologies. Players control karts through physical motion using accelerometer sensors connected to a Raspberry Pi, creating a hybrid experience between hardware input and browser-based gameplay.",
+
+        "problem": "Traditional keyboard-only controls lacked originality and physical interaction. The goal was to create a more immersive karting experience using motion sensors, while still keeping the system practical enough for a university environment with limited hardware resources.",
+
+        "solution": "Developed a karting game using Grove motion sensors and Raspberry Pi hardware to capture player movement and translate it into in-game controls. To improve performance, sensor data was transmitted from the Raspberry Pi to a separate computer hosting the game logic and web interface. A hybrid multiplayer mode was also implemented using one motion-controlled player and one keyboard-controlled player.",
+
+        "challenges": "Learning Raspberry Pi development, sensor integration, and real-time motion input handling from scratch was a major challenge. Hosting the game directly on the Raspberry Pi caused performance bottlenecks, which required designing a communication layer to send sensor data to another machine. Two-player sensor mode introduced hardware conflicts that required additional components unavailable at the university, forcing an adaptive fallback solution. Since the game engine ran in an external Python file rather than JavaScript, race timing and score persistence also required custom workaround logic.",
+
+        "outcome": "Delivered a fully functional prototype demonstrating practical hardware/software integration, real-time input systems, networking between devices, and adaptability under hardware constraints. The project highlighted problem-solving skills beyond standard web development.",
+
+        "tech_tags": "Python,Raspberry Pi,Grove Sensors,Flask, Pygame, Hardware Integration,Game Development,Networking,Embedded Systems",
+
+        "preview_img": None,
+
+        "github_url": None,
+
+        "demo_url": "https://projet-karting.onrender.com/",
+
+        "video_url": None,
+
+        "featured": True,
+
+        "order": 4
+    },
+    {
+        "title": "Wizard Typing",
+        "slug": "wizard-typing",
         "category": "cwh",
-        "short_desc": "Internal tool to generate structured lesson plans from a topic outline.",
-        "overview": "Built during my instructor role at CodeWizardsHQ to speed up curriculum prep.",
-        "problem": "Writing new lesson plans from scratch took 2–3 hours per session.",
-        "solution": "Template engine + markdown parser that scaffolds exercises, objectives and rubrics automatically.",
-        "challenges": "Keeping generated structure flexible enough for different age groups.",
-        "outcome": "Reduced lesson-prep time by ~60% across the team.",
-        "tech_tags": "Python,Jinja2,Markdown,Click",
+        "short_desc": "A browser-based typing speed game focused on reaction time, accuracy, and competitive keyboard training.",
+
+        "overview": "An interactive typing web application designed to improve typing speed and accuracy through real-time word challenges. The platform emphasizes fast feedback, responsiveness, and engaging gameplay mechanics to make keyboard practice more enjoyable than traditional typing tests. Implemented in my internship with CWHQ",
+
+        "problem": "Most typing websites feel outdated, repetitive, or visually uninspired. Many focus only on raw WPM metrics without creating an engaging experience that motivates users to keep improving.",
+
+        "solution": "Built a custom typing platform with dynamic word generation, real-time scoring, accuracy tracking, and a game-oriented interface. Designed the UX to feel faster, cleaner, and more rewarding than conventional typing trainers.",
+
+        "challenges": "Balancing responsive keyboard input handling with smooth UI updates required careful front-end event management. Creating an experience that remained lightweight while feeling interactive and polished was a key technical focus.",
+
+        "outcome": "Delivered a functional typing game that demonstrates strong front-end fundamentals, DOM manipulation, event-driven programming, UX thinking, and browser performance awareness.",
+
+        "tech_tags": "JavaScript,HTML,CSS,Frontend,Backend,Flask, sqlite3, Matplotlib",
+
         "preview_img": None,
-        "github_url": "https://github.com/yourusername/lesson-builder",
-        "demo_url": None,
+
+        "github_url": None,
+
+        "demo_url": "https://9543.wizardtyping.com/",
+
         "video_url": None,
+
         "featured": True,
-        "order": 4,
+
+        "order": 5
     },
+    {
+        "title": "8-Bit Space Invaders",
+        "slug": "8bit-space-invaders",
+        "category": "school",
+        "short_desc": "A custom Space Invaders remake built with Pygame in a retro 8-bit style, developed as my first programming project.",
+
+        "overview": "A school assignment that evolved into a personal passion project. Instead of following the provided step-by-step documentation, I independently designed and implemented my own version of Space Invaders using Pygame, focusing on originality, retro aesthetics, and complete gameplay functionality.",
+
+        "problem": "The assignment could have been completed mechanically by following the professor’s documentation, but that approach would not have reflected creativity, independent problem-solving, or personal coding style. I wanted to challenge myself by building the game from scratch with my own architecture.",
+
+        "solution": "Created a fully playable Space Invaders game using Python and Pygame, featuring custom enemy movement systems, collision logic, scoring mechanics, player controls, and a stylized 8-bit visual identity. The project prioritized originality and experimentation over template-driven implementation.",
+
+        "challenges": "As my first real programming project, I built many systems without prior experience or formal patterns, leading to unconventional implementations and trial-and-error problem solving. Managing game loops, sprite behavior, collisions, and clean state transitions while learning programming fundamentals in parallel was a significant challenge.",
+
+        "outcome": "Delivered a complete and functional arcade game that demonstrated early creativity, persistence, and strong self-learning instincts. While the code can now be optimized with more experience, the project remains an important milestone that reflects initiative and genuine passion for programming.",
+
+        "tech_tags": "Python,Pygame,Game Development",
+
+        "preview_img": None,
+
+        "github_url": None,
+
+        "demo_url": None,
+
+        "video_url": None,
+
+        "featured": False,
+
+        "order": 6
+    }
 ]
+
 
 SAMPLE_SKILLS = [
     # Languages
