@@ -104,19 +104,6 @@ with app.app_context():
     db.session.commit()
 ```
 
----
-
-## Customisation Checklist
-
-- [ ] Replace `Your Name` everywhere in templates
-- [ ] Update GitHub / LinkedIn / email links in `layout.html` and `contact.html`
-- [ ] Add `static/img/portrait.jpg`
-- [ ] Add `static/cv/your-cv.pdf` and update the href in `about.html`
-- [ ] Edit `SECRET_KEY` in `app.py` before deploying
-- [ ] Swap the YouTube placeholder in `seed.py` with real video URLs
-- [ ] Tune CSS variables in `:root` block of `main.css` to taste
-
----
 
 ## Design System
 
