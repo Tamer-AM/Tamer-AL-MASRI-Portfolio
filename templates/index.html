@@ -25,7 +25,7 @@
           <img
             src="{{ url_for('static', filename='images/Tamer formal pic.jpeg') }}"
             alt="Tamer AL MASRI"
-            class="pf-portrait"
+            class="pf-portrait pf-clickable-img"
           />
         </div>
       </div>
@@ -156,5 +156,35 @@
     </div>
   </div>
 </section>
+<!-- Image Popup -->
+<div id="img-popup" class="pf-img-popup">
+  <span class="pf-img-close">&times;</span>
+  <img class="pf-img-popup-content" id="popup-img">
+</div>
 
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const img = document.querySelector(".pf-clickable-img");
+  const popup = document.getElementById("img-popup");
+  const popupImg = document.getElementById("popup-img");
+  const closeBtn = document.querySelector(".pf-img-close");
+
+  img.addEventListener("click", () => {
+    popup.style.display = "block";
+    popupImg.src = img.src;
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.style.display = "none";
+  });
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.style.display = "none";
+    }
+  });
+</script>
 {% endblock %}

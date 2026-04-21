@@ -4,17 +4,17 @@
 ================================================================ */
 /* ── PROJECT INFO BGS ───────────────────────────────────────────── */
 .university{
-  background: linear-gradient(to bottom, #003800 0%, #000000 100%);
+  background: linear-gradient(to bottom, #00221b 0%, #000000 100%);
 }
 
 .school{
-  background: linear-gradient(to bottom, #4e2801 0%, #000000 100%);
+  background: linear-gradient(to bottom,  #371c15 0%, #000000 100%);
 }
 .cwh{
-  background: linear-gradient(to bottom, #380038 0%, #000000 100%);
+  background: linear-gradient(to bottom,  #2d003a 0%, #000000 100%);
 }
 .personal{
-  background: linear-gradient(to bottom, #123b46 0%, #000000 100%);
+  background: linear-gradient(to bottom, #0d2945 0%, #000000 100%);
 }
 /* ── PROJECT CARDS ───────────────────────────────────────────── */
 .pf-project-card {

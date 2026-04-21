@@ -58,7 +58,15 @@
   border: 4px solid var(--pf-surface-2);
   box-shadow: var(--pf-shadow);
 }
- 
+
+.pf-clickable-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pf-clickable-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
 /* ── HERO TEXT ───────────────────────────────────────────────── */
 .pf-hero-greeting {
   font-size: 1rem;
@@ -173,6 +181,37 @@
   margin: 0;
 }
  
+
+
+.pf-img-popup {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.pf-img-popup-content {
+  display: block;
+  margin: auto;
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 12px;
+}
+
+.pf-img-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
 @media (max-width: 767px) {
   .pf-hero        { padding: 3rem 0; }
