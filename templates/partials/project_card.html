@@ -9,7 +9,7 @@
   <div class="pf-project-card-img-wrap">
     {% if project.preview_img %}
       <img
-        src="{{ url_for('static', filename='img/' + project.preview_img) }}"
+        src="{{ url_for('static', filename='images/project-imgs/' + project.preview_img) }}"
         alt="{{ project.title }} preview"
         class="pf-project-card-img"
       />

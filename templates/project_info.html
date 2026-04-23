@@ -53,7 +53,7 @@
       {% if project.preview_img %}
       <div class="col-lg-4 text-center">
         <img
-          src="{{ url_for('static', filename='img/' + project.preview_img) }}"
+          src="{{ url_for('static', filename='images/project-imgs/' + project.preview_img) }}"
           alt="{{ project.title }} preview"
           class="pf-detail-preview-img rounded-3"
         />
@@ -159,9 +159,10 @@
           <h6 class="pf-sidebar-heading">Video Demo</h6>
           <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
             <iframe
-              src="{{ project.video_url }}"
+              src="{{ url_for('static', filename='videos/' + project.video_url) }}"
               title="{{ project.title }} demo"
-              allowfullscreen
+              allowfullscreen 
+              sandbox
             ></iframe>
           </div>
         </div>

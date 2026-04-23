@@ -23,11 +23,11 @@ SAMPLE_PROJECTS = [
         "challenges": "Getting glassmorphism to degrade gracefully on older browsers; solved with a solid fallback background.",
         "outcome": "A fully self-hosted, recruiter-ready portfolio with a CMS-lite admin path.",
         "tech_tags": "Python,Flask,Bootstrap 5,SQLite,Jinja2",
-        "preview_img": None,
-        "github_url": "https://github.com/yourusername/portfolio",
+        "preview_img": "my portfolio homepage.jpg",
+        "github_url": "https://github.com/Tamer-AM/Tamer-AL-MASRI-Portfolio",
         "demo_url": None,
         "video_url": None,
-        "featured": True,
+        "featured": False,
         "order": 1,
     },
     {
@@ -48,9 +48,9 @@ SAMPLE_PROJECTS = [
 
         "tech_tags": "Python,Flask,SQLite,JavaScript,HTML,CSS,Jinja2,SQL",
 
-        "preview_img": None,
+        "preview_img": "les debatteurs homepage PROTOTYPE.jpg",
 
-        "github_url": None,
+        "github_url": "https://gitlabsu.sorbonne-universite.fr/lu2in013/fev2026/gr1/les-debatteurs",
 
         "demo_url": None,
 
@@ -61,26 +61,26 @@ SAMPLE_PROJECTS = [
         "order": 2
     },
     {
-        "title": "Ensemble Data Science Competition Project",
-        "slug": "ensemble-data-science-competition",
+        "title": "Data Science Competition - Tree Diagnosis Classification",
+        "slug": "data-science-competition-tree-diagnosis-classification",
         "category": "university",
-        "short_desc": "A competitive machine learning project combining multiple classifiers, feature selection, and weighted voting to achieve a top leaderboard ranking.",
+        "short_desc": "A competitive from-scratch machine learning project combining multiple classifiers, feature selection, and weighted voting to achieve a top leaderboard ranking.",
 
-        "overview": "A university data science project focused on building high-performing predictive models on a real dataset under competitive evaluation. Multiple machine learning algorithms were implemented, compared, tuned, and combined into an ensemble pipeline that significantly outperformed individual models.",
+        "overview": "A university data science competition project focused on predicting the classification_diagnostic status of city trees using structured environmental and botanical data. Rather than relying on scikit-learn abstractions, we implemented and tuned the models manually to understand the algorithms deeply.",
 
-        "problem": "Single-model approaches often plateaued in accuracy or reacted differently to noisy, categorical, and numerical features. The challenge was to identify the strengths of each algorithm and combine them into a more robust final predictor.",
+        "problem": "The dataset mixed categorical and numerical features, noisy variables, and multiclass outputs. The objective was to maximize prediction accuracy while working under academic constraints and implementing core methods ourselves.",
 
-        "solution": "Implemented Naïve Bayes, k-NN with cross-validation, Decision Trees, and Random Forest models using Python scientific libraries. Added preprocessing workflows, feature selection methods such as Cramér's V for categorical relevance, parameter search utilities, and a weighted voting ensemble to merge predictions.",
+        "solution": "Built a complete ML workflow including preprocessing, label encoding, normalization, feature selection, custom KNN, Decision Tree, Random Forest, cross-validation, hyperparameter search, and a weighted ensemble voting model.",
 
-        "challenges": "Balancing feature engineering, preprocessing quality, hyperparameter tuning cost, and model variance required repeated experimentation. Building reusable validation utilities and combining heterogeneous models into a stable ensemble was the main technical challenge.",
+        "challenges":"Implementing tree-based models manually, keeping train/test encodings consistent, optimizing expensive feature-combination searches, balancing multiple model outputs, and making the notebook reusable and easy to debug.",
 
-        "outcome": "The final ensemble model substantially outperformed the standalone classifiers and finished tied for #1 on the competition leaderboard. The project demonstrated strong analytical reasoning, experimentation discipline, and practical machine learning workflow design.",
+        "outcome": "The final ensemble model significantly outperformed the standalone models and finished tied for 1st place on the class leaderboard.",
 
-        "tech_tags": "Data Science,Python,Pandas,NumPy,Jupyter,Machine Learning,Cross Validation,Ensemble Learning",
+        "tech_tags": "Data Science,Python,Pandas,NumPy,Jupyter,Machine Learning,Cross Validation,KNN,Decision Tree,Random Forest,Ensemble Learning",
 
-        "preview_img": None,
+        "preview_img": "royalty free urban trees.jpg",
 
-        "github_url": None,
+        "github_url": "https://github.com/Tamer-AM/are-tree-diagnosis-classification-from-scratch",
 
         "demo_url": None,
 
@@ -108,13 +108,13 @@ SAMPLE_PROJECTS = [
 
         "tech_tags": "Python,Raspberry Pi,Grove Sensors,Flask, Pygame, Hardware Integration,Game Development,Networking,Embedded Systems",
 
-        "preview_img": None,
+        "preview_img": "karting project homepage.jpg",
 
-        "github_url": None,
+        "github_url": "https://github.com/Tamer-AM/Projet-Karting",
 
         "demo_url": "https://projet-karting.onrender.com/",
 
-        "video_url": None,
+        "video_url": "karting project usage footage.mp4",
 
         "featured": True,
 
@@ -138,7 +138,7 @@ SAMPLE_PROJECTS = [
 
         "tech_tags": "JavaScript,HTML,CSS,Frontend,Backend,Flask, sqlite3, Matplotlib",
 
-        "preview_img": None,
+        "preview_img": 'wizard typing project homepage.jpg',
 
         "github_url": None,
 
@@ -151,34 +151,34 @@ SAMPLE_PROJECTS = [
         "order": 5
     },
     {
-        "title": "8-Bit Space Invaders",
-        "slug": "8bit-space-invaders",
-        "category": "school",
-        "short_desc": "A custom Space Invaders remake built with Pygame in a retro 8-bit style, developed as my first programming project.",
+    "title": "8-Bit Space Invaders",
+    "slug": "8bit-space-invaders",
+    "category": "school",
+    "short_desc": "My first coding project - A retro-style Space Invaders remake built in Python with Pygame Zero, featuring custom pixel-art visuals, original gameplay systems, and arcade mechanics.",
 
-        "overview": "A school assignment that evolved into a personal passion project. Instead of following the provided step-by-step documentation, I independently designed and implemented my own version of Space Invaders using Pygame, focusing on originality, retro aesthetics, and complete gameplay functionality.",
+    "overview": "Originally developed as a school assignment, this project quickly evolved into a personal challenge to build a complete Space Invaders game independently rather than following the provided tutorial structure. I designed and implemented my own version from scratch, focusing on originality, retro 8-bit aesthetics, and fully playable arcade gameplay.",
 
-        "problem": "The assignment could have been completed mechanically by following the professor’s documentation, but that approach would not have reflected creativity, independent problem-solving, or personal coding style. I wanted to challenge myself by building the game from scratch with my own architecture.",
+    "problem": "The assignment could have been completed by mechanically reproducing the professor’s documentation, but that would not demonstrate creativity, problem-solving ability, or independent programming skills. I wanted to push myself by creating my own architecture and gameplay systems while still learning the fundamentals of coding.",
 
-        "solution": "Created a fully playable Space Invaders game using Python and Pygame, featuring custom enemy movement systems, collision logic, scoring mechanics, player controls, and a stylized 8-bit visual identity. The project prioritized originality and experimentation over template-driven implementation.",
+    "solution": "Built a complete Space Invaders clone in Python using Pygame Zero, featuring custom code-generated pixel sprites, enemy wave movement logic, shooting mechanics, destructible bases, collision systems, score tracking, lives management, sound effects, music integration, and start / win / lose game states.",
 
-        "challenges": "As my first real programming project, I built many systems without prior experience or formal patterns, leading to unconventional implementations and trial-and-error problem solving. Managing game loops, sprite behavior, collisions, and clean state transitions while learning programming fundamentals in parallel was a significant challenge.",
+    "challenges": "As my first serious programming project, many systems were created through experimentation without prior experience in software architecture or game development patterns. Managing the game loop, collision detection, animation timing, enemy behavior, state transitions, and asset handling while learning Python simultaneously was the main challenge.",
 
-        "outcome": "Delivered a complete and functional arcade game that demonstrated early creativity, persistence, and strong self-learning instincts. While the code can now be optimized with more experience, the project remains an important milestone that reflects initiative and genuine passion for programming.",
+    "outcome": "Successfully delivered a complete and functional arcade game that showcased strong curiosity, self-learning ability, and creative initiative. Although the codebase reflects an early learning stage and can now be significantly improved, the project remains an important milestone in my development journey.",
 
-        "tech_tags": "Python,Pygame,Game Development",
+    "tech_tags": "Python,Pygame Zero,Pygame,Game Development",
 
-        "preview_img": None,
+    "preview_img": "Space Invaders beginning.jpg",
 
-        "github_url": None,
+    "github_url": "https://github.com/Tamer-AM/Space-Invaders-pygame",
 
-        "demo_url": None,
+    "demo_url": None,
 
-        "video_url": None,
+    "video_url": "Space Invaders gameplay recording with audio.mp4",
 
-        "featured": False,
+    "featured": False,
 
-        "order": 6
+    "order": 6
     }
 ]
 
