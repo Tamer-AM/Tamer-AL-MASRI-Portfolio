@@ -23,7 +23,7 @@ SAMPLE_PROJECTS = [
         "challenges": "Getting glassmorphism to degrade gracefully on older browsers; solved with a solid fallback background.",
         "outcome": "A fully self-hosted, recruiter-ready portfolio with a CMS-lite admin path.",
         "tech_tags": "Python,Flask,Bootstrap 5,SQLite,Jinja2",
-        "preview_img": "my portfolio homepage.jpg",
+        "preview_imgs": "my portfolio homepage.jpg",
         "github_url": "https://github.com/Tamer-AM/Tamer-AL-MASRI-Portfolio",
         "demo_url": None,
         "video_url": None,
@@ -48,7 +48,7 @@ SAMPLE_PROJECTS = [
 
         "tech_tags": "Python,Flask,SQLite,JavaScript,HTML,CSS,Jinja2,SQL",
 
-        "preview_img": "les debatteurs homepage PROTOTYPE.jpg",
+        "preview_imgs": "les debatteurs homepage PROTOTYPE.jpg",
 
         "github_url": "https://gitlabsu.sorbonne-universite.fr/lu2in013/fev2026/gr1/les-debatteurs",
 
@@ -78,7 +78,7 @@ SAMPLE_PROJECTS = [
 
         "tech_tags": "Data Science,Python,Pandas,NumPy,Jupyter,Machine Learning,Cross Validation,KNN,Decision Tree,Random Forest,Ensemble Learning",
 
-        "preview_img": "royalty free urban trees.jpg",
+        "preview_imgs": "royalty free urban trees.jpg",
 
         "github_url": "https://github.com/Tamer-AM/are-tree-diagnosis-classification-from-scratch",
 
@@ -108,7 +108,7 @@ SAMPLE_PROJECTS = [
 
         "tech_tags": "Python,Raspberry Pi,Grove Sensors,Flask, Pygame, Hardware Integration,Game Development,Networking,Embedded Systems",
 
-        "preview_img": "karting project homepage.jpg",
+        "preview_imgs": "karting project homepage.jpg,karting project img1.jpeg,karting project img2.jpeg",
 
         "github_url": "https://github.com/Tamer-AM/Projet-Karting",
 
@@ -138,7 +138,7 @@ SAMPLE_PROJECTS = [
 
         "tech_tags": "JavaScript,HTML,CSS,Frontend,Backend,Flask, sqlite3, Matplotlib",
 
-        "preview_img": 'wizard typing project homepage.jpg',
+        "preview_imgs": 'wizard typing project homepage.jpg',
 
         "github_url": None,
 
@@ -168,7 +168,7 @@ SAMPLE_PROJECTS = [
 
     "tech_tags": "Python,Pygame Zero,Pygame,Game Development",
 
-    "preview_img": "Space Invaders beginning.jpg",
+    "preview_imgs": "Space Invaders beginning.jpg",
 
     "github_url": "https://github.com/Tamer-AM/Space-Invaders-pygame",
 
@@ -210,7 +210,7 @@ def seed_tables():
     
     clear_all_db()
     for dico in SAMPLE_PROJECTS:
-        insert_project(title=dico['title'],slug=dico['slug'], category=dico["category"], short_desc=dico["short_desc"], overview=dico['overview'], problem=dico['problem'], solution=dico['solution'], challenges=dico['challenges'], outcome=dico['outcome'], tech_tags=dico['tech_tags'], preview_img=dico['preview_img'], github_url=dico['github_url'], demo_url=dico['demo_url'], video_url=dico['video_url'], featured=dico['featured'], order=dico['order'])
+        insert_project(title=dico['title'],slug=dico['slug'], category=dico["category"], short_desc=dico["short_desc"], overview=dico['overview'], problem=dico['problem'], solution=dico['solution'], challenges=dico['challenges'], outcome=dico['outcome'], tech_tags=dico['tech_tags'], preview_imgs=dico['preview_imgs'], github_url=dico['github_url'], demo_url=dico['demo_url'], video_url=dico['video_url'], featured=dico['featured'], order=dico['order'])
         
     for dico in SAMPLE_SKILLS:
         insert_skill(name=dico['name'], category=dico['category'], icon=dico["icon"], order=dico["order"])

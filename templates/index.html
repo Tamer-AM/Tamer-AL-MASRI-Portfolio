@@ -49,8 +49,15 @@
           <a href="{{ url_for('projects.index') }}" class="btn pf-btn-primary btn-lg">
             <i class="bi bi-grid me-2"></i>View Projects
           </a>
-          <a href="{{ url_for('contact.index') }}" class="btn pf-btn-outline btn-lg">
+          <a href="{{ url_for('contact.index') }}" class="btn pf-btn-glow btn-lg">
             <i class="bi bi-envelope me-2"></i>Contact Me
+          </a>
+          <a
+            href="{{ url_for('static', filename='cv/CV tamer - EN.pdf') }}"
+            download
+            class="btn pf-btn-outline btn-lg"
+          >
+            <i class="bi bi-download me-2"></i>Download CV
           </a>
         </div>
       </div>
