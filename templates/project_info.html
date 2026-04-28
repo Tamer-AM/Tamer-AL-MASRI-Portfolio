@@ -16,7 +16,7 @@
     </a>
 
     <div class="row align-items-end mt-3 g-4">
-      <div class="col-lg-8">
+      <div class="col-lg-7">
         <span class="pf-category-badge pf-category-badge--{{ project.category }}">
           {{ project.category | capitalize }}
         </span>
@@ -49,14 +49,54 @@
         </div>
       </div>
 
-      <!-- Preview image (right column) -->
-      {% if project.preview_img %}
-      <div class="col-lg-4 text-center">
-        <img
-          src="{{ url_for('static', filename='images/project-imgs/' + project.preview_img) }}"
-          alt="{{ project.title }} preview"
-          class="pf-detail-preview-img rounded-3"
-        />
+      <!-- ── Right: inline carousel ── -->
+      {% if project.images %}
+      <div class="col-lg-5">
+ 
+        <div class="pf-inline-carousel-wrap">
+          <!-- Expand hint icon (top-right corner) -->
+          <div class="pf-carousel-expand-hint" id="expand-hint" aria-hidden="true">
+            <i class="bi bi-arrows-fullscreen carousel-expand"></i>
+          </div>
+ 
+          <div id="inlineCarousel"
+               class="carousel slide pf-inline-carousel"
+               data-bs-ride="false"
+               data-bs-wrap="true">
+ 
+            <div class="carousel-inner pf-inline-carousel-inner">
+              {% for img in project.images %}
+              <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <img
+                  src="{{ url_for('static', filename='images/project-imgs/' + img) }}"
+                  alt="{{ project.title }} — screenshot {{ loop.index }}"
+                  class="pf-inline-carousel-img"
+                />
+              </div>
+              {% endfor %}
+            </div>
+ 
+            {% if project.images | length > 1 %}
+            <button class="carousel-control-prev pf-carousel-ctrl" type="button"
+                    data-bs-target="#inlineCarousel" data-bs-slide="prev">
+              <i class="bi bi-chevron-left" aria-hidden="true"></i>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next pf-carousel-ctrl" type="button"
+                    data-bs-target="#inlineCarousel" data-bs-slide="next">
+              <i class="bi bi-chevron-right" aria-hidden="true"></i>
+              <span class="visually-hidden">Next</span>
+            </button>
+            {% endif %}
+          </div>
+ 
+          {% if project.images | length > 1 %}
+          <p class="pf-carousel-counter">
+            <span id="inlineCurrent">1</span>&thinsp;/&thinsp;{{ project.images | length }}
+          </p>
+          {% endif %}
+        </div>
+ 
       </div>
       {% endif %}
     </div>
@@ -64,13 +104,102 @@
 </section>
 
 
-<!-- ── Main body ──────────────────────────────────────── -->
+<!-- ═══════════════════════════════════════════════════════════
+     LIGHTBOX  (rendered once, hidden by default)
+════════════════════════════════════════════════════════════ -->
+{% if project.images %}
+<div class="pf-lightbox" id="pfLightbox" role="dialog" aria-modal="true"
+     aria-label="Image gallery" aria-hidden="true">
+ 
+  <!-- Backdrop — click to close -->
+  <div class="pf-lightbox-backdrop" id="pfLightboxBackdrop"></div>
+ 
+  <!-- Panel -->
+  <div class="pf-lightbox-panel">
+ 
+    <!-- Close button -->
+    <button class="pf-lightbox-close" id="pfLightboxClose" aria-label="Close image gallery">
+      <i class="bi bi-x-lg"></i>
+    </button>
+ 
+    <!-- Lightbox carousel -->
+    <div id="lightboxCarousel"
+         class="carousel slide pf-lightbox-carousel"
+         data-bs-ride="false"
+         data-bs-wrap="true">
+ 
+      <div class="carousel-inner h-100">
+        {% for img in project.images %}
+        <div class="carousel-item h-100 {% if loop.first %}active{% endif %}">
+          <div class="pf-lightbox-slide">
+            <img
+              src="{{ url_for('static', filename='images/project-imgs/' + img) }}"
+              alt="{{ project.title }} — screenshot {{ loop.index }}"
+              class="pf-lightbox-img"
+            />
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+ 
+      {% if project.images | length > 1 %}
+      <button class="carousel-control-prev pf-lightbox-ctrl pf-lightbox-ctrl--prev"
+              type="button" data-bs-target="#lightboxCarousel" data-bs-slide="prev">
+        <i class="bi bi-chevron-left" aria-hidden="true"></i>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next pf-lightbox-ctrl pf-lightbox-ctrl--next"
+              type="button" data-bs-target="#lightboxCarousel" data-bs-slide="next">
+        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+        <span class="visually-hidden">Next</span>
+      </button>
+      {% endif %}
+    </div>
+ 
+    {% if project.images | length > 1 %}
+    <div class="pf-lightbox-counter" aria-live="polite">
+      <span id="lightboxCurrent">1</span>&thinsp;/&thinsp;{{ project.images | length }}
+    </div>
+    {% endif %}
+ 
+  </div>
+</div>
+{% endif %}
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN BODY
+════════════════════════════════════════════════════════════ -->
 <section class="pf-section">
   <div class="container">
     <div class="row g-5">
 
       <!-- Left: case study text -->
       <div class="col-lg-8">
+        {% if project.outcome %}
+        <div class="pf-detail-block">
+          <h2 class="pf-detail-section-title">
+            <i class="bi bi-trophy me-2 pf-accent"></i>Outcome
+          </h2>
+          <p>{{ project.outcome }}</p>
+        </div>
+        {% endif %}
+
+        <!-- ── View More toggle button ── -->
+        {% set has_more = project.overview or project.problem or project.solution or project.challenges %}
+        {% if has_more %}
+        <div class="pf-view-more-wrap">
+          <button class="pf-view-more-btn" id="viewMoreBtn" aria-expanded="false">
+            <span class="pf-view-more-label">
+              <i class="bi bi-chevron-down pf-view-more-icon"></i>
+              View full case study
+            </span>
+          </button>
+          <div class="pf-view-more-line"></div>
+        </div>
+        {% endif %}
+
+        <!-- ── Collapsible sections ── -->
+        <div class="pf-detail-expandable" id="detailExpandable" aria-hidden="true">
 
         {% if project.overview %}
         <div class="pf-detail-block">
@@ -108,14 +237,9 @@
         </div>
         {% endif %}
 
-        {% if project.outcome %}
-        <div class="pf-detail-block">
-          <h2 class="pf-detail-section-title">
-            <i class="bi bi-trophy me-2 pf-accent"></i>Outcome
-          </h2>
-          <p>{{ project.outcome }}</p>
         </div>
-        {% endif %}
+        <!-- end collapsible -->
+  
 
       </div>
 
@@ -158,12 +282,12 @@
         <div class="pf-glass-card">
           <h6 class="pf-sidebar-heading">Video Demo</h6>
           <div class="ratio ratio-16x9 rounded-2 overflow-hidden">
-            <iframe
-              src="{{ url_for('static', filename='videos/' + project.video_url) }}"
-              title="{{ project.title }} demo"
-              allowfullscreen 
-              sandbox
-            ></iframe>
+            <video controls>
+              <source src="{{ url_for('static', filename='videos/' + project.video_url) }}"
+                  title="{{ project.title }} demo"
+                  type="video/mp4">
+                your browser does not support the video tag
+          </video>
           </div>
         </div>
         {% endif %}
@@ -179,7 +303,122 @@
 
 {% block scripts %} 
 <script>
+  (function () {
+  "use strict";
+ 
+  /* ── Helpers ────────────────────────────────────────────── */
+  function getActiveIndex(carouselEl) {
+    return [...carouselEl.querySelectorAll(".carousel-item")]
+      .findIndex(el => el.classList.contains("active"));
+  }
+ 
+  /* ═══════════════════════════════════════════════════════
+     CAROUSEL + LIGHTBOX
+  ════════════════════════════════════════════════════════ */
+  const inlineEl   = document.getElementById("inlineCarousel");
+  const lightboxEl = document.getElementById("pfLightbox");
+ 
+  if (inlineEl && lightboxEl) {
+    const lightboxCarouselEl = document.getElementById("lightboxCarousel");
+    const inlineCurrent      = document.getElementById("inlineCurrent");
+    const lightboxCurrent    = document.getElementById("lightboxCurrent");
+ 
+    /* Bootstrap carousel instances */
+    const bsInline   = bootstrap.Carousel.getOrCreateInstance(inlineEl,          { ride: false, wrap: true });
+    const bsLightbox = bootstrap.Carousel.getOrCreateInstance(lightboxCarouselEl, { ride: false, wrap: true });
+ 
+    /* ── Counter sync ─────────────────────────────────── */
+    inlineEl.addEventListener("slid.bs.carousel", () => {
+      if (inlineCurrent) inlineCurrent.textContent = getActiveIndex(inlineEl) + 1;
+    });
+ 
+    lightboxCarouselEl.addEventListener("slid.bs.carousel", () => {
+      if (lightboxCurrent) lightboxCurrent.textContent = getActiveIndex(lightboxCarouselEl) + 1;
+      /* Mirror slide back to inline carousel */
+      bsInline.to(getActiveIndex(lightboxCarouselEl));
+    });
+ 
+    /* ── Open ─────────────────────────────────────────── */
+    function openLightbox() {
+      const idx = getActiveIndex(inlineEl);
+      bsLightbox.to(idx);
+      if (lightboxCurrent) lightboxCurrent.textContent = idx + 1;
+ 
+      lightboxEl.classList.add("pf-lightbox--open");
+      lightboxEl.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+ 
+      /* Focus the close button for keyboard accessibility */
+      document.getElementById("pfLightboxClose").focus();
+    }
+ 
+    /* ── Close ────────────────────────────────────────── */
+    function closeLightbox() {
+      lightboxEl.classList.remove("pf-lightbox--open");
+      lightboxEl.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+ 
+    /* ── Triggers ─────────────────────────────────────── */
+    /* Click anywhere on the inline carousel inner to open */
+    inlineEl.querySelector(".carousel-inner").addEventListener("click", openLightbox);
+    document.getElementById("expand-hint").addEventListener("click", openLightbox);
+ 
+    document.getElementById("pfLightboxClose").addEventListener("click", closeLightbox);
+    document.getElementById("pfLightboxBackdrop").addEventListener("click", closeLightbox);
+ 
+    /* Keyboard: Escape closes, arrows navigate */
+    document.addEventListener("keydown", (e) => {
+      if (!lightboxEl.classList.contains("pf-lightbox--open")) return;
+      if (e.key === "Escape")      closeLightbox();
+      if (e.key === "ArrowLeft")   bsLightbox.prev();
+      if (e.key === "ArrowRight")  bsLightbox.next();
+    });
+  }
+
+   /* ═══════════════════════════════════════════════════════
+     VIEW MORE TOGGLE
+  ════════════════════════════════════════════════════════ */
+
+  const btn        = document.getElementById("viewMoreBtn");
+  const expandable = document.getElementById("detailExpandable");
+ 
+  if (btn && expandable) {
+    btn.addEventListener("click", () => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+ 
+      if (isOpen) {
+        // Collapse: animate height back to 0
+        expandable.style.height = expandable.scrollHeight + "px";
+        // Force reflow so the browser registers the explicit height before transitioning
+        expandable.offsetHeight;
+        expandable.style.height = "0";
+        expandable.setAttribute("aria-hidden", "true");
+        btn.setAttribute("aria-expanded", "false");
+        btn.querySelector(".pf-view-more-label").innerHTML =
+          '<i class="bi bi-chevron-down pf-view-more-icon"></i> View full case study';
+      } else {
+        // Expand: set height to scrollHeight, then let CSS transition play
+        expandable.style.height = expandable.scrollHeight + "px";
+        expandable.setAttribute("aria-hidden", "false");
+        btn.setAttribute("aria-expanded", "true");
+        btn.querySelector(".pf-view-more-label").innerHTML =
+          '<i class="bi bi-chevron-up pf-view-more-icon"></i> Show less';
+ 
+        // After transition ends, remove fixed height so content can reflow freely
+        expandable.addEventListener("transitionend", () => {
+          if (btn.getAttribute("aria-expanded") === "true") {
+            expandable.style.height = "auto";
+          }
+        }, { once: true });
+      }
+    });
+  }
+
   var body = document.getElementById('pf-body');
   body.classList.add("{{project.category}}");
+
+
+})();
 </script>
 {% endblock %}

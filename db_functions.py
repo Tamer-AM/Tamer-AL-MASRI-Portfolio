@@ -3,8 +3,8 @@ from sqlalchemy import delete, select
 from datetime import datetime
 
 ###insertions
-def insert_project(title:str, slug:str, category:str, short_desc:str, overview:str, problem:str, solution:str, challenges:str, outcome:str, tech_tags:str, preview_img:str, github_url:str, demo_url:str, video_url:str, featured:bool, order:int):
-    p = Project(title=title, slug=slug, category=category, short_desc=short_desc,overview=overview, problem=problem, solution=solution, challenges=challenges, outcome=outcome, tech_tags=tech_tags, preview_img=preview_img, github_url=github_url, demo_url=demo_url, video_url=video_url, featured=featured, order=order)
+def insert_project(title:str, slug:str, category:str, short_desc:str, overview:str, problem:str, solution:str, challenges:str, outcome:str, tech_tags:str, preview_imgs:str, github_url:str, demo_url:str, video_url:str, featured:bool, order:int):
+    p = Project(title=title, slug=slug, category=category, short_desc=short_desc,overview=overview, problem=problem, solution=solution, challenges=challenges, outcome=outcome, tech_tags=tech_tags, preview_imgs=preview_imgs, github_url=github_url, demo_url=demo_url, video_url=video_url, featured=featured, order=order)
     db.session.add(p)
     db.session.commit()
 
@@ -55,5 +55,8 @@ def clear_all_db():
     Skill.query.delete()
     Project.query.delete()
     db.session.commit()
+    db.drop_all()
+    db.create_all()
+    
     
     

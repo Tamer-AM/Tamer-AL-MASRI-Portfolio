@@ -2,20 +2,13 @@
    projects.css — Project listing and detail page styles
    Depends on: layout.css (tokens + shared components)
 ================================================================ */
-/* ── PROJECT INFO BGS ───────────────────────────────────────────── */
-.university{
-  background: linear-gradient(to bottom, #00221b 0%, #000000 100%);
-}
 
-.school{
-  background: linear-gradient(to bottom,  #371c15 0%, #000000 100%);
-}
-.cwh{
-  background: linear-gradient(to bottom,  #2d003a 0%, #000000 100%);
-}
-.personal{
-  background: linear-gradient(to bottom, #0d2945 0%, #000000 100%);
-}
+/* ── PROJECT DETAIL PAGE BG (category-tinted gradient) ──────── */
+body.university { background: linear-gradient(to bottom, #00221b 0%, #000000 100%); }
+body.school     { background: linear-gradient(to bottom, #371c15 0%, #000000 100%); }
+body.cwh        { background: linear-gradient(to bottom, #2d003a 0%, #000000 100%); }
+body.personal   { background: linear-gradient(to bottom, #0d2945 0%, #000000 100%); }
+
 /* ── PROJECT CARDS ───────────────────────────────────────────── */
 .pf-project-card {
   background: var(--pf-surface);
@@ -113,11 +106,10 @@
   color: #fff;
 }
 
-/* ── PROJECT DETAIL PAGE ─────────────────────────────────────── */
+/* ── PROJECT DETAIL HEADER ───────────────────────────────────── */
 .pf-detail-header {
   padding: 3rem 0;
   border-bottom: 1px solid var(--pf-border);
-  background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
 }
 
 .pf-back-link {
@@ -125,7 +117,6 @@
   font-weight: 600;
   color: var(--pf-text-muted);
 }
-
 .pf-back-link:hover { color: var(--pf-accent); }
 
 .pf-detail-title {
@@ -140,13 +131,7 @@
   max-width: 600px;
 }
 
-.pf-detail-preview-img {
-  max-width: 100%;
-  max-height: 260px;
-  object-fit: cover;
-  box-shadow: var(--pf-shadow);
-}
-
+/* ── CASE STUDY BLOCKS ───────────────────────────────────────── */
 .pf-detail-block {
   margin-bottom: 3rem;
 }
@@ -159,7 +144,332 @@
   border-bottom: 1px solid var(--pf-border);
 }
 
+/* ── VIEW MORE TOGGLE ────────────────────────────────────────── */
+.pf-view-more-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.pf-view-more-line {
+  flex: 1;
+  height: 1px;
+  background: var(--pf-border);
+}
+
+.pf-view-more-btn {
+  appearance: none;
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-sm);
+  padding: 0.5rem 1.1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--pf-transition);
+}
+
+.pf-view-more-btn:hover {
+  background: var(--pf-surface-2);
+  border-color: var(--pf-accent);
+}
+
+.pf-view-more-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--pf-accent);
+  pointer-events: none;
+}
+
+.pf-view-more-icon {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.pf-view-more-btn[aria-expanded="true"] .pf-view-more-icon {
+  transform: rotate(180deg);
+}
+
+.pf-detail-expandable {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INLINE CAROUSEL (right column of the detail header)
+═══════════════════════════════════════════════════════════════ */
+
+/*
+  Wrapper: position:relative so the expand hint (absolute child)
+  is anchored to the carousel edge, not the whole page.
+*/
+.pf-inline-carousel-wrap {
+  position: relative;
+}
+
+/*
+  The Bootstrap carousel element itself.
+  overflow:hidden clips images to the rounded corners.
+  cursor:zoom-in signals the click-to-expand behaviour.
+*/
+.pf-inline-carousel {
+  border-radius: var(--pf-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--pf-border);
+  box-shadow: var(--pf-shadow);
+  cursor: zoom-in;
+}
+
+/*
+  Fixed aspect ratio keeps the header height stable as slides change.
+  background fills the gap while images load.
+*/
+.pf-inline-carousel-inner {
+  aspect-ratio: 16 / 10;
+  background: var(--pf-surface-2);
+}
+
+.pf-inline-carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+  /* prevent the image itself from intercepting the click-to-open */
+  pointer-events: none;
+  user-select: none;
+}
+
+.pf-inline-carousel:hover .pf-inline-carousel-img {
+  transform: scale(1.02);
+}
+
+/* Prev / next arrow buttons — fade in on hover */
+.pf-carousel-ctrl {
+  width: 2.25rem;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  /* make sure Bootstrap's default background doesn't show */
+  background: none !important;
+}
+
+.pf-inline-carousel:hover .pf-carousel-ctrl {
+  opacity: 1;
+}
+
+.pf-carousel-ctrl .bi {
+  font-size: 1.1rem;
+  color: #fff;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.7));
+}
+
+/*
+  Expand hint badge — absolutely positioned inside .pf-inline-carousel-wrap.
+  It sits in the TOP-RIGHT corner of the carousel image area.
+  z-index:10 keeps it above the carousel slides.
+*/
+.pf-carousel-expand-hint {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.28rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  
+}
+
+.pf-inline-carousel-wrap:hover .pf-carousel-expand-hint {
+  opacity: 1;
+}
+
+/* Slide counter text below the carousel */
+.pf-carousel-counter {
+  font-size: 0.8rem;
+  color: var(--pf-text-faint);
+  text-align: center;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LIGHTBOX OVERLAY
+═══════════════════════════════════════════════════════════════ */
+
+.pf-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* hidden state */
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pf-lightbox--open {
+  visibility: visible;
+  pointer-events: all;
+}
+
+/* Blurred dark backdrop */
+.pf-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.pf-lightbox--open .pf-lightbox-backdrop {
+  opacity: 1;
+}
+
+/* Panel — the dark card that holds the carousel */
+.pf-lightbox-panel {
+  position: relative;
+  z-index: 1;
+  width: min(92vw, 1100px);
+  height: min(88vh, 800px);
+  background: var(--pf-surface);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-lg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* slide-up + fade entrance */
+  transform: translateY(24px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity   0.25s ease;
+}
+
+.pf-lightbox--open .pf-lightbox-panel {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* Close button — top-right inside the panel */
+.pf-lightbox-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+  appearance: none;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: var(--pf-transition);
+}
+
+.pf-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1);
+}
+
+/* Carousel inside the panel fills available height */
+.pf-lightbox-carousel {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Each slide: centred image */
+.pf-lightbox-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1.5rem;
+}
+
+.pf-lightbox-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: var(--pf-radius);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+
+/* Prev / next controls */
+.pf-lightbox-ctrl {
+  appearance: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: var(--pf-transition);
+}
+
+.pf-lightbox-ctrl:hover {
+  background: rgba(59, 130, 246, 0.5);
+  border-color: var(--pf-accent);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.pf-lightbox-ctrl--prev { left:  0.75rem; }
+.pf-lightbox-ctrl--next { right: 0.75rem; }
+
+/* Counter strip at the bottom of the panel */
+.pf-lightbox-counter {
+  text-align: center;
+  padding: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--pf-text-faint);
+  border-top: 1px solid var(--pf-border);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .pf-inline-carousel-wrap { margin-top: 1.5rem; }
+}
+
 @media (max-width: 767px) {
   .pf-detail-title { font-size: 1.75rem; }
+
+  .pf-lightbox-panel {
+    width: 97vw;
+    height: 85vh;
+  }
+
+  .pf-lightbox-ctrl {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1rem;
+  }
 }

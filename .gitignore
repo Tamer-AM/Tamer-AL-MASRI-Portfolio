@@ -37,7 +37,6 @@ Thumbs.db
 static/uploads/
 
 # CV (keep out of version control — share manually)
-static/cv/
 
 # Pytest / coverage
 .pytest_cache/

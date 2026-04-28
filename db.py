@@ -30,7 +30,7 @@ class Project(db.Model):
     challenges  = db.Column(db.Text, nullable=True)                        # detail page – challenges & solutions
     outcome     = db.Column(db.Text, nullable=True)                        # detail page – results
     tech_tags   = db.Column(db.String(300), nullable=True)                 # comma-separated  e.g. "Python,Flask,SQLite"
-    preview_img = db.Column(db.String(200), nullable=True)                 # path relative to /static/img/
+    preview_imgs = db.Column(db.String(200), nullable=True)                 # path relative to /static/img/
     github_url  = db.Column(db.String(300), nullable=True)
     demo_url    = db.Column(db.String(300), nullable=True)                 # leave None if no live demo
     video_url   = db.Column(db.String(300), nullable=True)                 # YouTube embed URL
@@ -44,6 +44,14 @@ class Project(db.Model):
         if not self.tech_tags:
             return []
         return [t.strip() for t in self.tech_tags.split(",")]
+    
+    @property
+    def images(self):
+        """Return images as a Python list."""
+        if not self.tech_tags:
+            return []
+        return [t.strip() for t in self.preview_imgs.split(",")]
+    
 
     def __repr__(self):
         return f"<Project {self.slug}>"

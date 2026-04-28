@@ -149,6 +149,20 @@ a:hover { color: #93c5fd; }
   color: var(--pf-text);
 }
 
+.pf-btn-glow{
+  background-color: var(--pf-accent-glow);
+  color: var(--pf-text);
+  border-radius: var(--pf-radius-sm);
+  transition: var(--pf-transition);
+  border: 1.5px solid var(--pf-border);
+  font-weight: 600;
+}
+.pf-btn-glow:hover {
+  color: var(--pf-accent);
+  transform: translateY(-1px);
+  border-color: var(--pf-text);
+}
+
 /* ── 5. SHARED SECTION STRUCTURE ─────────────────────────────── */
 .pf-section {
   padding: 5rem 0;
